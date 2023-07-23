@@ -18,3 +18,20 @@ export const getProducts = async ()=>{
     }
 
 }
+
+
+export const getProduct = async (productId)=>{
+
+try{
+    const product = await axios.get(`${apiAddress}products/${productId}`)
+
+    return product.data;
+}
+catch(err){
+    return Promise.reject(err.message)
+}
+
+
+
+
+}
