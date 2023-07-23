@@ -3,7 +3,8 @@
 const ROUTS = {
 
     ROOT:"/",
-    PAGE2:"/page2"
+    PAGE2:"/page2",
+    PRODUCTPAGE:"/productpage",
 
 }
 
