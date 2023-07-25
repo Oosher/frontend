@@ -22,15 +22,21 @@ export default function ProductPage() {
     },[id])
 
     return (
-        <Box sx={{display:"flex",flexDirection:"column",width:"80%",margin:"0 auto"}}>
-            <Box sx={{display:"flex" , justifyContent:"space-between",alignItems:"center"}}>
-                <Typography variant="h3" color="initial">{product?.name}</Typography>
-                <img src={product?.imageUrl} alt={product?.imageAlt} style={{height:"40vh"}}/>
-            </Box>
-            <Button variant="contained" color="info" sx={{}}>
-                <ShoppingCartIcon/>
-            </Button>
+        <Box sx={{display:"flex",flexDirection:"column",width:"60%",margin:"0 auto"}}>
 
+            <Box sx={{display:"flex" , justifyContent:"start",gap:"5vw"}}>
+                <img src={product?.imageUrl} alt={product?.imageAlt} style={{height:"40vh",width:"30vw"}}/>
+                <Box sx={{marginTop:"5vh"}}>
+                    <Typography variant="h3" color="initial">{product?.name}</Typography>
+                    <Typography variant="body1" color="initial" sx={{marginTop:"2vh"}}>{product?.description}</Typography>
+
+
+                </Box>
+                
+            </Box>
+                    <Button variant="contained" color="info" sx={{width:"50%",alignSelf:"end"}}>
+                        <ShoppingCartIcon/>
+                    </Button>
         </Box>
     )
 }
