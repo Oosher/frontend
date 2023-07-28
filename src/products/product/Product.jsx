@@ -8,7 +8,7 @@ import ProductActions from './productActions/ProductActions'
 export default function Product({product}) {
     return (
         <Card sx={{height:"30vh",marginTop:"1.5vh"}} >
-            <ProductHead title={product?.name} src={product?.imageUrl} productId={product._id}/>
+            <ProductHead title={product?.name} src={product?.imageArray[0].imageUrl} productId={product._id}/>
             <ProductActions/>
         </Card>
     )

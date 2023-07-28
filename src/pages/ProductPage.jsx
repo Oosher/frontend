@@ -23,8 +23,9 @@ export default function ProductPage() {
       <Box sx={{ display: "flex", flexDirection: "column", width: "60%", margin: "2vh auto " }}>
         <Box sx={{ display: "flex", justifyContent: "start", gap: "2vw" }}>
           <Carousel sx={{ width: "50%" }}>
-            <Item item={{ imageUrl: product?.imageUrl, imageAlt: product?.imageAlt }} />
-            <Item item={{ imageUrl: product?.imageUrl, imageAlt: product?.imageAlt }} />
+            {product?.imageArray?.map((image,i) => (
+              <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />
+            ))}
           </Carousel>
           <Box sx={{ marginTop: "5vh" }}>
             <Typography variant="h3" color="initial">
@@ -33,7 +34,8 @@ export default function ProductPage() {
             <Typography variant="body1" color="initial" sx={{ marginTop: "2vh" }}>
               {product?.description}
             </Typography>
-            <Typography variant="body1" color="initial" sx={{marginTop:"219px"}}>&#8362;{product?.price}
+            <Typography variant="body1" color="initial" sx={{ marginTop: "219px" }}>
+              &#8362;{product?.price}
             </Typography>
             <Button variant="contained" color="info" sx={{ width: "140%", alignSel: "flex-end" }}>
               <ShoppingCartIcon />
@@ -52,6 +54,6 @@ function Item (props){
 
 return(
 <Paper >
-    <CardMedia component="image" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ height: "40vh", width: "30vw" ,borderRadius:"1%" }} />
+    <CardMedia component="img" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ height: "40vh", width: "30vw" ,borderRadius:"1%" }} />
 </Paper>)
 }
