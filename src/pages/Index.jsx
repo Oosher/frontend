@@ -5,7 +5,7 @@
 
 
 
-import { Box, Container, Typography } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getProducts } from '../products/services/productServices';
 import Product from '../products/product/Product';
@@ -27,8 +27,14 @@ export default function Index() {
 
 
     return (
-    <Box sx={{bgcolor:"yellow",height:"100vh",position:"relative",display:"flex"}}>
-        {products?.map((product,index)=><Container key={index}><Product product={product}/></Container>)}
-    </Box>
-    )
+      <Container sx={{ position: "relative", display: "flex" }}>
+        <Grid container spacing={2} direction="row-reverse">
+          {products?.map((product, index) => (
+            <Grid item xs={4}>
+              <Product product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    );
 }

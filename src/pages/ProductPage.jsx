@@ -20,28 +20,26 @@ export default function ProductPage() {
     }, [id])
 
     return (
-      <Box sx={{ display: "flex", flexDirection: "column", width: "60%", margin: "2vh auto " }}>
-        <Box sx={{ display: "flex", justifyContent: "start", gap: "2vw" }}>
-          <Carousel sx={{ width: "50%" }}>
-            {product?.imageArray?.map((image,i) => (
-              <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />
-            ))}
-          </Carousel>
-          <Box sx={{ marginTop: "5vh" }}>
-            <Typography variant="h3" color="initial">
-              {product?.name}
-            </Typography>
-            <Typography variant="body1" color="initial" sx={{ marginTop: "2vh" }}>
-              {product?.description}
-            </Typography>
-            <Typography variant="body1" color="initial" sx={{ marginTop: "219px" }}>
-              &#8362;{product?.price}
-            </Typography>
-            <Button variant="contained" color="info" sx={{ width: "140%", alignSel: "flex-end" }}>
-              <ShoppingCartIcon />
-            </Button>
-          </Box>
-        </Box>
+      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gridTemplateRows: "1fr 5fr 1fr 2fr", width: "75vw",height:"70vh", margin: "2vh auto " }}>
+        <Carousel sx={{ width: "90%", gridRow: "1/5",justifySelf:"center",alignSelf:"center" }}>
+          {product?.imageArray?.map((image, i) => (
+            <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />
+          ))}
+        </Carousel>
+
+        <Typography variant="h3" color="initial">
+          {product?.name}
+        </Typography>
+        <Typography variant="body1" color="initial" sx={{ marginTop: "2vh" }}>
+          {product?.description}
+        </Typography>
+
+        <Button variant="contained" color="info" sx={{display:"flex", padding:"0", width: "100%",justifyContent:"center", height: "60%",gap:"0.2vw", alignSelf: "end", gridRow: "4/5", gridColumn: "2/3",margin:"0" }}>
+          <Typography variant="body1" color="initial" sx={{ color:"white",alignSelf:"center" ,fontSize:"1.8rem",fontWeight:"bold"}}>
+            &#8362;{product?.price}
+          </Typography>
+          <ShoppingCartIcon sx={{alignSelf:"center",justifySelf:"center",fontSize:"2rem"}}/>
+        </Button>
       </Box>
     );
 }
@@ -52,8 +50,9 @@ export default function ProductPage() {
 function Item (props){
 
 
-return(
-<Paper >
-    <CardMedia component="img" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ height: "40vh", width: "30vw" ,borderRadius:"1%" }} />
-</Paper>)
+return (
+  <Paper >
+    <CardMedia component="img" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ maxHeight:"69vh",borderRadius: "1%" }} />
+  </Paper>
+);
 }

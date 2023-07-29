@@ -13,15 +13,15 @@ import ROUTS from '../../../routes/Routs';
 
 export default function LeftNav() {
     return (
-        <Toolbar>
+        <Toolbar >
             <Link to={ROUTS.ROOT} style={{color:"black"}}>
                 <IconButton>
-                    <HomeIcon/>
+                    <HomeIcon sx={{fontSize:"5rem"}}/>
                 </IconButton>
             </Link>
             <MenuItem>
-                <Link to={ROUTS.PAGE2}>
-                    <Typography variant="body1" color="initial">products</Typography>
+                <Link to={ROUTS.PAGE2} style={{textDecoration:"none"}}>
+                    <Typography variant="h6" color="initial">products</Typography>
                 </Link>
             </MenuItem>
         
