@@ -1,6 +1,6 @@
 
 
-import { Container, TextField, Button, Box, Divider } from '@mui/material'
+import { Container, TextField, Button, Box, Divider, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { logIn } from '../users/services/userService'
 import { useNavigate } from 'react-router-dom'
@@ -9,7 +9,9 @@ import ROUTS from '../routes/Routs'
 
 export default function LogIn() {
 
-    const [loginInfo,setLoginInfo] = useState({email:"",password:""})
+    const [loginInfo,setLoginInfo] = useState({email:"",password:""});
+
+    const [loginError,setLoginError]  = useState("")
 
 
 
@@ -18,7 +20,18 @@ export default function LogIn() {
 
     const submit = ()=>{
 
-        logIn(loginInfo).then((res)=>console.log(res))
+        logIn(loginInfo).then((res)=>{
+
+            if(res?.response?.data){
+
+                setLoginError(res.response.data)
+
+            }else{
+                setLoginError("")
+                console.log(res)
+            }
+        })
+        
 
 
     }
@@ -45,9 +58,11 @@ export default function LogIn() {
           <Button variant="contained" color="success" sx={{ fontWeight: "bold" }} onClick={submit}>
             Login
           </Button>
+
+          <Typography variant="body1" color="error">{loginError}</Typography>
         </Box>
         <Divider orientation="vertical" flexItem/>
-        <Button variant="contained" color="warning" sx={{ height: "5vh" ,width:"17vw"}}  onClick={()=>{goTo(ROUTS.SIGNUP)}}   >
+        <Button variant="contained" color="warning" sx={{ height: "5vh" ,width:"17vw"}}  onClick={()=>{goTo(ROUTS.SIGNUP)}} >
           SignUp
         </Button>
       </Container>
