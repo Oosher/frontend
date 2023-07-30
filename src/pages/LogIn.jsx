@@ -30,11 +30,11 @@ export default function LogIn() {
                 setLoginError(res.response.data)
 
             }else{
-                setLoginError("")
-                console.log(res)
+                setLoginError("");
+                console.log(res);
                 saveUser(res);
-                setUser(getUserFromLocalStorage())
-                setTimeout(()=>{goTo(ROUTS.ROOT)},1000)
+                setUser(getUserFromLocalStorage());
+                setTimeout(()=>{goTo(ROUTS.ROOT)},1000);
                 
             }
         })
