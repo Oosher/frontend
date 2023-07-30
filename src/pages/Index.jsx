@@ -10,13 +10,15 @@ import React, { useEffect, useState } from 'react'
 import { getProducts } from '../products/services/productServices';
 import Product from '../products/product/Product';
 
+
 export default function Index() {
 
     const [products,setProducts] = useState([]);
+
     
     useEffect(()=>{
         getProducts().then((result)=>setProducts(result))
-        
+            
 
     },[])
 
