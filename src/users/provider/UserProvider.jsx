@@ -27,10 +27,6 @@ export default function UserProvider( {children}) {
 
     },[user])
 
-
-
-
-
     const logOut =()=>{
 
     removeJWT();

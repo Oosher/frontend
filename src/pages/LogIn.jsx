@@ -20,6 +20,7 @@ export default function LogIn() {
 
     const goTo = useNavigate();
     
+    const { user } = useUserService();
 
     const submit = (e)=>{
         e.preventDefault();
@@ -55,21 +56,33 @@ export default function LogIn() {
 
 
 
+  
+    if (user)return goTo(ROUTS.ROOT)
+
 
     return (
-      <Container sx={{ width: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", marginTop: "18vh",gap:"1vw"}}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5vh" }}>
-          <TextField variant="outlined" name="email" label="email" value={loginInfo.email} onChange={updateInfo} sx={{ width: "18vw" }} />
+      <Container sx={{ width: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", marginTop: "18vh", gap: "1vw" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5vh", width: "18vw" }}>
+          <TextField variant="outlined" name="email" label="email" value={loginInfo.email} onChange={updateInfo} />
           <TextField variant="outlined" name="password" label="password" value={loginInfo.password} onChange={updateInfo} />
 
           <Button variant="contained" type="submit" color="success" sx={{ fontWeight: "bold" }} onClick={submit}>
             Login
           </Button>
 
-          <Typography variant="body1" color="error">{loginError}</Typography>
+          <Typography variant="body1" color="error">
+            {loginError}
+          </Typography>
         </Box>
-        <Divider orientation="vertical" flexItem/>
-        <Button variant="contained" color="warning" sx={{ height: "5vh" ,width:"17vw"}}  onClick={()=>{goTo(ROUTS.SIGNUP)}} >
+        <Divider orientation="vertical" flexItem />
+        <Button
+          variant="contained"
+          color="warning"
+          sx={{ height: "5vh", width: "17vw" }}
+          onClick={() => {
+            goTo(ROUTS.SIGNUP);
+          }}
+        >
           SignUp
         </Button>
       </Container>
