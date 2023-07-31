@@ -26,3 +26,15 @@ export const getUserFromLocalStorage =  ()=>{
         return null
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+export const removeJWT = ()=>localStorage.removeItem("key");

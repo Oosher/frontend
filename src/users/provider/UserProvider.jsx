@@ -3,7 +3,7 @@
 
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { getUserFromLocalStorage } from '../../localStorage/localStorageService';
+import { getUserFromLocalStorage, removeJWT } from '../../localStorage/localStorageService';
 
 
 
@@ -13,8 +13,6 @@ export default function UserProvider( {children}) {
 
 
     const [user,setUser] = useState(null);
-
-
 
 
 
@@ -30,8 +28,19 @@ export default function UserProvider( {children}) {
     },[user])
 
 
+
+
+
+    const logOut =()=>{
+
+    removeJWT();
+
+    setUser(null)
+
+    };
+
     return (
-        <UserContext.Provider value={{user,setUser}}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{user,setUser,logOut}}>{children}</UserContext.Provider>
     )
 }
 
