@@ -33,11 +33,10 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
       </IconButton>
       <Menu
         anchorOrigin={{
-          verticalL: "top",
+          vertical: "top",
           horizontal: "right",
         }}
         keepMounted
-        transformOrigin={{ verticalL: "top", horizontal: "right" }}
         open={isOpen}
         onClose={changeMenuStatus}
         sx={{marginLeft:"-1.3vw",marginTop:"90px"}}

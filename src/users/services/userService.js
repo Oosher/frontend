@@ -27,3 +27,25 @@ export const logIn =  async (user) =>{
 
 
 }
+
+
+
+
+export const register = async (registerData)=>{
+
+
+    try{
+        const register = await axios.post(`${apiAddress}users/newuser`,registerData);
+
+        return register.data;
+        
+    }catch(err){
+
+        return err;
+
+    }
+
+
+}
+
+

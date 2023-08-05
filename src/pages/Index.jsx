@@ -32,7 +32,7 @@ export default function Index() {
       <Container sx={{ position: "relative", display: "flex" }}>
         <Grid container spacing={2} direction="row-reverse">
           {products?.map((product, index) => (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={index}>
               <Product product={product} />
             </Grid>
           ))}
