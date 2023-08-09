@@ -1,8 +1,9 @@
 import axios from "axios";
+import { getKeyFromLocalStorage } from "../../localStorage/localStorageService";
 
 
 const apiAddress = "http://localhost:8181/"
-
+axios.defaults.headers.common["auth-token"] = getKeyFromLocalStorage();
 
 export const getProducts = async ()=>{
 
@@ -34,4 +35,20 @@ catch(err){
 
 
 
+}
+
+
+
+export const createProduct = async (normalizedProduct)=>{ 
+
+
+
+    try{
+        const newProduct = await axios.post(`${apiAddress}products/createnewproduct`,normalizedProduct)
+
+        return newProduct;}
+
+        catch(err){
+            return Promise.reject(err);
+        }
 }

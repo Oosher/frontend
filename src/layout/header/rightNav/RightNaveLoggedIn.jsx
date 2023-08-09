@@ -10,14 +10,15 @@
 import {  Avatar, IconButton, Menu, MenuItem } from '@mui/material'
 import React, { useCallback, useState } from 'react'
 import { useUserService } from '../../../users/provider/UserProvider';
+import { useNavigate } from 'react-router-dom';
+import ROUTS from '../../../routes/Routs';
 
 
 export default function RightNaveLoggedIn({userName,imageSrc}) {
 
   const [isOpen,setIsOpen] = useState(false);
-
-
-  const {logOut} = useUserService()
+  const {logOut,user} = useUserService()
+  const Navigate = useNavigate();
 
   const changeMenuStatus = useCallback( ()=>{
 
@@ -46,6 +47,11 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
           changeMenuStatus();
           
           }}>Log out</MenuItem>
+        {user?.isAdmin&&<MenuItem onClick={()=>{
+            changeMenuStatus();
+            Navigate(ROUTS.CREATEPRODUCT);
+        }
+        }>Create new product</MenuItem>}
       </Menu>
     </>
   );

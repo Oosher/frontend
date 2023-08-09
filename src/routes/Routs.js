@@ -7,6 +7,7 @@ const ROUTS = {
     PRODUCTPAGE:"/productpage",
     LOGIN:"/login",
     SIGNUP:"/signup",
+    CREATEPRODUCT:"/createnewproduct",
 
 }
 

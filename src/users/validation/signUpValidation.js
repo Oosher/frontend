@@ -21,7 +21,7 @@ const schema =  {
                         'user "password" must be at least nine characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-',
                     }).required(),
 
-                    imageUrl: Joi.string().ruleset.regex(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/).rule({message: "the url is not valid"}).required(),
+                    imageUrl: Joi.string().ruleset.regex(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/).rule({message: "the url is not valid"}).required(),
                     imageAlt:Joi.string().ruleset.min(3).rule({message:"must include an image alt"}).required(),
 
 

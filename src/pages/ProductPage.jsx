@@ -8,23 +8,27 @@ import Carousel from 'react-material-ui-carousel';
 
 export default function ProductPage() {
 
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState({});
+    const [productArray,setProductArray] = useState([])
     const {id} = useParams();
 
 
 
     useEffect(() => {
 
-        getProduct(id).then((result) => setProduct(result));
+        getProduct(id).then((result) => {
+          setProduct(result)
+          setProductArray(result.imageArray.filter((image)=>image.imageUrl!==""))
+        });
+
+     
 
     }, [id])
 
     return (
       <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gridTemplateRows: "1fr 5fr 1fr 2fr", width: "75vw",height:"70vh", margin: "2vh auto " }}>
         <Carousel sx={{ width: "90%", gridRow: "1/5",justifySelf:"center",alignSelf:"center" }}>
-          {product?.imageArray?.map((image, i) => (
-            <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />
-          ))}
+          {productArray?.map((image, i) => <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />)}
         </Carousel>
 
         <Typography variant="h3" color="initial">
@@ -52,7 +56,7 @@ function Item (props){
 
 return (
   <Paper >
-    <CardMedia component="img" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ maxHeight:"69vh",borderRadius: "1%" }} />
+    <CardMedia component="img" image={props.item.imageUrl} alt={props.item.imageAlt} sx={{ maxHeight:"69vh",borderRadius: "1%" ,minHeight:"69vh"}} />
   </Paper>
 );
 }

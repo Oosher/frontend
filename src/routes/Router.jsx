@@ -14,6 +14,7 @@ import Page2 from '../pages/Page2'
 import ProductPage from '../pages/ProductPage'
 import LogIn from '../pages/LogIn'
 import SignUpPage from '../pages/SignUpPage'
+import CreateNewProductPage from '../pages/CreateNewProductPage'
 
 
 export default function Router() {
@@ -24,6 +25,7 @@ export default function Router() {
         <Route path={`${ROUTS.PRODUCTPAGE}/:id`} element={<ProductPage />} />
         <Route path={ROUTS.LOGIN} element={<LogIn/>} />
         <Route path={ROUTS.SIGNUP} element={<SignUpPage/>} />
+        <Route path={ROUTS.CREATEPRODUCT} element={<CreateNewProductPage/>} />
       </Routes>
     );
 }

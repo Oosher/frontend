@@ -17,7 +17,7 @@ export const getUserFromLocalStorage =  ()=>{
 
 
     try{
-    const user =  localStorage.getItem("key")
+    const user =  localStorage.getItem("key");
     
     return jwtDecode(user);
 
@@ -28,12 +28,7 @@ export const getUserFromLocalStorage =  ()=>{
 }
 
 
-
-
-
-
-
-
+export const getKeyFromLocalStorage = ()=>localStorage.getItem("key");
 
 
 
