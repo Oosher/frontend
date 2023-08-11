@@ -14,7 +14,7 @@ export default function CreateNewProductPage() {
     const arr =[1,2,3,4,5,6,7,8,9,10];
     const [val,setVal] =useState(arr[0]);
     const [selected,setSelected] = useState(false);
-    const [errorInfo,setErrorInfo] = useState();
+    const [errorInfo,setErrorInfo] = useState({});
     const [formValue, setFormValue] = useState({ productName: "", productDescription: "", stock: "", price: "", image1: "", image2: "", image3: "", image4: "", image5: "", image6: "", image7: "", image8: "", image9: "", image10: "", imageAlt1: "", imageAlt2: "", imageAlt3: "", imageAlt4: "", imageAlt5: "", imageAlt6: "", imageAlt7: "", imageAlt8: "", imageAlt9: "", imageAlt10: "" });
     const { updateData } = useData(setFormValue, productSchema, setErrorInfo);
     console.log(errorInfo);
@@ -54,8 +54,13 @@ const CreateProductForm = ({numberOfImages, inputValue, updateData , errorInfo})
  
     const submit = (e)=>{
         e.preventDefault();
-
-        createProduct(normalizeProduct(inputValue))
+        if (Object.keys(errorInfo).length===0) {
+          
+            createProduct(normalizeProduct(inputValue));
+          
+          
+        }
+        
 
 
     }

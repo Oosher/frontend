@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useParams} from 'react-router-dom'
 import {getProduct} from '../products/services/productServices';
-import {Box,Button,CardMedia,Paper,Typography} from '@mui/material';
+import {Box,Button,CardMedia,Paper,Typography, useMediaQuery} from '@mui/material';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Carousel from 'react-material-ui-carousel';
@@ -11,6 +11,8 @@ export default function ProductPage() {
     const [product, setProduct] = useState({});
     const [productArray,setProductArray] = useState([])
     const {id} = useParams();
+
+    const phone = useMediaQuery("(max-width:600px)");
 
 
 
@@ -26,7 +28,7 @@ export default function ProductPage() {
     }, [id])
 
     return (
-      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gridTemplateRows: "1fr 5fr 1fr 2fr", width: "75vw",height:"70vh", margin: "2vh auto " }}>
+      <Box  sx={phone?{display:"flex",flexDirection:"column"}:{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gridTemplateRows: "1fr 5fr 1fr 2fr", width: "75vw",height:"70vh", margin: "2vh auto " }}>
         <Carousel sx={{ width: "90%", gridRow: "1/5",justifySelf:"center",alignSelf:"center" }}>
           {productArray?.map((image, i) => <Item item={{ imageUrl: image.imageUrl, imageAlt: image.imageAlt }} key={i} />)}
         </Carousel>

@@ -2,8 +2,16 @@ import axios from "axios";
 import { getKeyFromLocalStorage } from "../../localStorage/localStorageService";
 
 
+
 const apiAddress = "http://localhost:8181/"
-axios.defaults.headers.common["auth-token"] = getKeyFromLocalStorage();
+
+
+
+
+    axios.defaults.headers.common["auth-token"] = getKeyFromLocalStorage();
+    
+
+
 
 export const getProducts = async ()=>{
 
@@ -15,7 +23,7 @@ export const getProducts = async ()=>{
         return products.data;
 
     }catch(err){
-        return Promise.reject(err.message);
+        console.log(err.message);
     }
 
 }
@@ -29,7 +37,7 @@ try{
     return product.data;
 }
 catch(err){
-    return Promise.reject(err.message)
+    console.log(err.message);
 }
 
 
@@ -49,6 +57,6 @@ export const createProduct = async (normalizedProduct)=>{
         return newProduct;}
 
         catch(err){
-            return Promise.reject(err);
+            console.log(err);
         }
 }
