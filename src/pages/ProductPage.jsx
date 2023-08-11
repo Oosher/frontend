@@ -23,7 +23,7 @@ export default function ProductPage() {
           setProductArray(result.imageArray.filter((image)=>image.imageUrl!==""))
         });
 
-     
+        
 
     }, [id])
 
