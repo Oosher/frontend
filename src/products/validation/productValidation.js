@@ -33,6 +33,7 @@ const productSchema = {
         imageAlt8:validate.normalValidate ,
         imageAlt9:validate.normalValidate ,
         imageAlt10:validate.normalValidate ,
+        category: validate.normalValidate,
 
                     
 

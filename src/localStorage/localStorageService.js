@@ -48,7 +48,23 @@ export const saveToLocalStorageCart = (product) =>{
     console.log(cart);
     if (cart) {
 
-        cart.push(product);
+        let amount=0;
+
+        cart.map((prod)=>{if (product._id===prod._id) {
+            amount++;
+            prod.amount++;
+    
+            
+        }
+        return prod;
+    })
+
+    if (amount===0){ 
+
+        cart.push({...product,amount:1});
+
+    }
+
 
         localStorage.setItem("cart",JSON.stringify(cart));
         
@@ -61,6 +77,20 @@ export const saveToLocalStorageCart = (product) =>{
         localStorage.setItem("cart",JSON.stringify(cart));
         
     }
+
+}
+
+
+export const removeItemFromCart = (itemId) =>{
+
+    let cart = getCartFromLocalStorage();
+
+    cart = cart.filter((product)=>product._id!==itemId);
+
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+
 
 }
 

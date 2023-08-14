@@ -4,26 +4,60 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { getCartFromLocalStorage,  } from '../../localStorage/localStorageService';
+import { getProducts } from '../services/productServices';
 
 
 
 const ProductContext = createContext();
 
 export default function ProductsProvider({ children }) {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [products,setProducts] = useState([]);
+  const [categories, setCategories] = useState([]); 
+  
 
   useEffect(() => {
-    if (!cart) {
+    
         if (getCartFromLocalStorage()) {
         
-            setCart(getCartFromLocalStorage().length);
+            setCart(getCartFromLocalStorage());
 
+        }else{
+            setCart([]);
         }
-    }
-  }, [cart]);
+
+        if (products.length===0) {
+
+          getProducts().then((res)=>setProducts(res))
+        
+          
+        }else{
+          if(categories.length===0){
+            let catArr = []
+            products.map((product) => {
+
+              if (catArr.indexOf(product.category)===-1) {
+
+                  catArr.push(product.category)
+                
+              }
+              return "";
+                
+            });
+            setCategories(catArr);
+    
 
 
-  return <ProductContext.Provider value={{ cart, setCart }}>{children}</ProductContext.Provider>;
+          }
+            
+        }
+
+
+
+  }, [products,categories]);
+
+
+  return <ProductContext.Provider value={{ cart, setCart,products,categories }}>{children}</ProductContext.Provider>;
 }
 
 

@@ -12,6 +12,7 @@ import React, { useCallback, useState } from 'react'
 import { useUserService } from '../../../users/provider/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import ROUTS from '../../../routes/Routs';
+import ShoppingCartButton from './ShoppingCartButton';
 
 
 export default function RightNaveLoggedIn({userName,imageSrc}) {
@@ -29,6 +30,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
 
   return (
     <>
+      <ShoppingCartButton />
       <IconButton sx={{ alignSelf: "center", marginRight: "2vw" }} onClick={changeMenuStatus}>
         <Avatar alt={`${userName} profile picture`} src={imageSrc} sx={{ width: "80px", height: "80px" }} />
       </IconButton>
@@ -40,18 +42,26 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
         keepMounted
         open={isOpen}
         onClose={changeMenuStatus}
-        sx={{marginLeft:"-1.3vw",marginTop:"90px"}}
+        sx={{ marginLeft: "-1.3vw", marginTop: "90px" }}
       >
-        <MenuItem onClick={()=>{
-          logOut();
-          changeMenuStatus();
-          
-          }}>Log out</MenuItem>
-        {user?.isAdmin&&<MenuItem onClick={()=>{
+        <MenuItem
+          onClick={() => {
+            logOut();
             changeMenuStatus();
-            Navigate(ROUTS.CREATEPRODUCT);
-        }
-        }>Create new product</MenuItem>}
+          }}
+        >
+          Log out
+        </MenuItem>
+        {user?.isAdmin && (
+          <MenuItem
+            onClick={() => {
+              changeMenuStatus();
+              Navigate(ROUTS.CREATEPRODUCT);
+            }}
+          >
+            Create new product
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

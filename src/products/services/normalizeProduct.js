@@ -26,6 +26,8 @@ export const normalizeProduct = (product) =>({
 
         price:product.price,
 
+        category:product.category,
+
     
 
 

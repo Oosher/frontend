@@ -16,12 +16,14 @@ export default function ShoppingCartButton() {
 
   const {cart} = useProductService();
 
+  console.log(cart);
+
 
 
   return (
     <IconButton onClick={()=>{navigate(ROUTS.CART)}}>
-      <Badge badgeContent={cart} color="error" sx={{ fontSize: "3rem" }}>
-        <ShoppingCart sx={{ fontSize: "3vw" }} />
+      <Badge badgeContent={cart.length} color="error" sx={{ fontSize: "3rem" }}>
+        <ShoppingCart sx={{ fontSize: "4rem" }} />
       </Badge>
     </IconButton>
   );

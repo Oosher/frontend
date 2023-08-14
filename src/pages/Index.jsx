@@ -25,6 +25,7 @@ export default function Index() {
 
 
 
+
     if (products===[])  return  <Typography variant="body1" color="initial">No products where found found</Typography>
 
 

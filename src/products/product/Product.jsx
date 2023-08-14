@@ -4,7 +4,7 @@ import { Card } from '@mui/material'
 import React, { useCallback } from 'react'
 import ProductHead from './productHead/ProductHead'
 import ProductActions from './productActions/ProductActions'
-import { saveToLocalStorageCart } from '../../localStorage/localStorageService'
+import { getCartFromLocalStorage, saveToLocalStorageCart } from '../../localStorage/localStorageService'
 import { useProductService } from '../providers/ProductsProvider'
 
 export default function Product({product}) {
@@ -17,7 +17,7 @@ export default function Product({product}) {
     
     const addToCart = useCallback(()=>{
         saveToLocalStorageCart(product);
-        setCart((prev)=>prev+1)
+        setCart(getCartFromLocalStorage());
     },[product,setCart])
 
     return (
