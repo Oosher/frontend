@@ -2,8 +2,8 @@
 
 
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { getCartFromLocalStorage,  } from '../../localStorage/localStorageService';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { getCartFromLocalStorage, saveToLocalStorageCart,  } from '../../localStorage/localStorageService';
 import { getProducts } from '../services/productServices';
 
 
@@ -13,7 +13,8 @@ const ProductContext = createContext();
 export default function ProductsProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [products,setProducts] = useState([]);
-  const [categories, setCategories] = useState([]); 
+  const [categories, setCategories] = useState([]);
+  const [currentCategory , setCurrentCategory] = useState(null);
   
 
   useEffect(() => {
@@ -56,8 +57,13 @@ export default function ProductsProvider({ children }) {
 
   }, [products,categories]);
 
+      const addToCart = useCallback((product) => {
+        saveToLocalStorageCart(product);
+        setCart(getCartFromLocalStorage());
+      }, [setCart]);
 
-  return <ProductContext.Provider value={{ cart, setCart,products,categories }}>{children}</ProductContext.Provider>;
+
+  return <ProductContext.Provider value={{ cart, setCart,products,categories  ,currentCategory,setCurrentCategory ,addToCart }}>{children}</ProductContext.Provider>;
 }
 
 

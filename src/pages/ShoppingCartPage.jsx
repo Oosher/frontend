@@ -28,7 +28,7 @@ export default function ShoppingCartPage() {
   return (
     <Container sx={{ width: "fit-content" }}>
       {cart?.map((product, i) => (
-        <Box sx={{ display: "flex", height: "5vh", margin: "1vh", justifyContent: "flex-end", gap: "1vw" }} key={i}>
+        <Box sx={{ display: "flex", height: "7vh", margin: "1vh", justifyContent: "flex-end", gap: "1vw" }} key={i}>
           <Button
             variant="outlined"
             color="error"
@@ -39,7 +39,7 @@ export default function ShoppingCartPage() {
           >
             X
           </Button>
-          <Box sx={{ display: "flex", width: "23vw", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", width: "30vw", justifyContent: "space-between" , }}>
             <Typography variant="body1" color="initial">
               &#8362;{product.price * (product.amount ? product.amount : 1)} Amount: {product.amount ? product.amount : 1}
             </Typography>

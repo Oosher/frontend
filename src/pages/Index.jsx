@@ -7,20 +7,30 @@
 
 import { Container, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { getProducts } from '../products/services/productServices';
 import Product from '../products/product/Product';
+import { useProductService } from '../products/providers/ProductsProvider';
 
 
 export default function Index() {
 
-    const [products,setProducts] = useState([]);
-
+    const { products, currentCategory } = useProductService();
     
-    useEffect(()=>{
-        getProducts().then((result)=>setProducts(result))
-            
+    const [page,setPage] = useState([]);
 
-    },[])
+    useEffect(()=>{
+    
+            if (!currentCategory) {
+              setPage(products);
+            }
+            else{
+
+              setPage(products?.filter((product)=>product.category===currentCategory))
+
+            }
+
+
+
+    },[page,products,currentCategory])
 
 
 
@@ -32,7 +42,7 @@ export default function Index() {
     return (
       <Container sx={{ position: "relative", display: "flex" }}>
         <Grid container spacing={2} direction="row-reverse">
-          {products?.map((product, index) => (
+          {page?.map((product, index) => (
             <Grid item xs={4} key={index}>
               <Product product={product} />
             </Grid>

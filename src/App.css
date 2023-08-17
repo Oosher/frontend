@@ -51,3 +51,17 @@
 }
 
 
+
+
+
+
+
+.scrollType{
+
+  &::-webkit-scrollbar{
+
+    width: 9px;
+  }
+
+
+}
