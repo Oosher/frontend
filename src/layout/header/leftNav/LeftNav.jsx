@@ -15,13 +15,15 @@ import ROUTS from '../../../routes/Routs';
 
 export default function LeftNav() {
 
-    const {categories,setCurrentCategory } = useProductService();
+    const {categories,setCurrentCategory,currentCategory } = useProductService();
 
 
     const [menuOpen,setMenuOpen] = useState(false)
 
 
     const navigate = useNavigate();
+
+
   
 
 
@@ -30,7 +32,7 @@ export default function LeftNav() {
         <IconButton onClick={() => setMenuOpen((prev) => !prev)}>
           <MenuIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
-        <Link to={ROUTS.ROOT} onClick={() => setCurrentCategory(null)} style={{ color: "black" }}>
+        <Link to={ROUTS.ROOT} onClick={() =>{ setCurrentCategory(null)}} style={{ color: "black" }}>
           <IconButton>
             <HomeIcon sx={{ fontSize: "5rem" }} />
           </IconButton>
@@ -39,12 +41,18 @@ export default function LeftNav() {
         {categories
           .filter((category, index) => index < 6)
           .map((category) => (
-            <MenuItem>
-              <Link to={ROUTS.ROOT} onClick={() => setCurrentCategory(category)} style={{ textDecoration: "none", margin: "0 1vw 0 1vw", textAlign: "center" }}>
+            <MenuItem sx={{ borderBottom: currentCategory === category ? "solid black 2px" : "0px" }}>
+              <ListItem
+                onClick={() => {
+                  navigate(ROUTS.ROOT);
+                  setCurrentCategory(category);
+                }}
+                style={{ textDecoration: "none", margin: "0 1vw 0 1vw", textAlign: "center" }}
+              >
                 <Typography variant="h6" color="initial">
                   {category}
                 </Typography>
-              </Link>
+              </ListItem>
             </MenuItem>
           ))}
 
@@ -56,9 +64,8 @@ export default function LeftNav() {
                   navigate(ROUTS.ROOT);
                   setCurrentCategory(category);
                   setMenuOpen((prev) => !prev);
-                  
                 }}
-                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" } , width:"9vw" }}
+                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" }, width: "9vw" }}
               >
                 {category}
               </ListItem>
