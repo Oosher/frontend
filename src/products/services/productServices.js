@@ -60,3 +60,19 @@ export const createProduct = async (normalizedProduct)=>{
             console.log(err);
         }
 }
+
+
+export const createNewOrder = async (orderDetails)=>{
+    try{
+        const newOrder = await axios.post(`${apiAddress}products/neworder`,orderDetails);
+
+        return newOrder;
+        
+    }catch(err){
+        console.log(err);
+    }
+
+
+
+
+}
