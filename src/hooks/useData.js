@@ -21,7 +21,7 @@ export default function useData(setData,schema,setErrors) {
                 return obj;
             });
         }
-        console.log(error);
+        
 
     }
     return {

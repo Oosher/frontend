@@ -9,6 +9,7 @@ const ROUTS = {
     SIGNUP:"/signup",
     CREATEPRODUCT:"/createnewproduct",
     CART:"/cart",
+    MYORDERS:"/myorders",
 
 }
 

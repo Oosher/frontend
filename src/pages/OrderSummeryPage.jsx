@@ -1,14 +1,27 @@
 
 
 import { Box, CardMedia, Container, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { clearShoppingCart, getCartFromLocalStorage } from '../localStorage/localStorageService';
+import { useProductService } from '../products/providers/ProductsProvider';
 
 export default function OrderSummeryPage({orderDetails,totalPrice,orderId}) {
-    
+   const {setCart} = useProductService();
+
+   const [orders,setOrders] = useState([]);
+    useEffect(()=>{
+        if (orderDetails.length!==0) {
+            setOrders(orderDetails);
+        }
+        
+        clearShoppingCart();
+        setCart(getCartFromLocalStorage());
+
+    },[orderDetails,setCart])
     return (
     <Container sx={{marginTop:"4vh"}}>
         <Typography variant="body1" color="initial"sx={{marginBottom:"4vh"}}>Order Number: {orderId}</Typography>
-        {orderDetails?.map((product)=><Box display="flex" justifyContent="space-between">
+        {orders?.map((product)=><Box display="flex" justifyContent="space-between">
             <Typography variant="body1" color="initial">
                 &#8362;{product.price * (product.amount ? product.amount : 1)} Amount: {product.amount ? product.amount : 1}
             </Typography>

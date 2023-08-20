@@ -51,15 +51,20 @@ useEffect(()=>{
   const postNewOrder = ()=>{
 
     if(user){
-      setErr("");
+      
+      if (total!==0) {
+        setErr("");
+      
       createNewOrder({ orderDetails: [...getCartFromLocalStorage()], userName: user.name.first + " " + user.name.last, email: user.email, totalPriceNis: total }).then((res)=>
       {
         if (res.statusText==="OK") {
             setOrderFinished(true);
             setOrderId(res.data._id);
+            
           
       }});
-
+    }
+      
     }else{
       setErr("you must log in before checking out")
     }
@@ -67,6 +72,8 @@ useEffect(()=>{
   }
 
   if(orderFinished) return <OrderSummeryPage orderDetails={cart} totalPrice={total} orderId={orderId}/>
+
+  if (total===0) return <Container sx={{marginTop:"30vh"}}><Typography variant="h2" color="initial" sx={{textAlign:"center"}}>You have no items in your cart</Typography></Container>
 
   return (
     <Container sx={{ width: "fit-content" }}>

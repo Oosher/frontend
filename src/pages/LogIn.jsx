@@ -31,18 +31,16 @@ export default function LogIn() {
     const submit = (e)=>{
         e.preventDefault();
 
-        console.log(inputError);
+       
 
         if(Object.keys(inputError).length===0){
           logIn(loginInfo).then((res)=>{
 
               if(res?.response?.data){
-
                   setLoginError(res.response.data)
 
               }else{
                   setLoginError("");
-                  console.log(res);
                   saveUser(res);
                   setUser(getUserFromLocalStorage());
                   setTimeout(()=>{goTo(ROUTS.ROOT)},1000);

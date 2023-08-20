@@ -16,6 +16,7 @@ import LogIn from '../pages/LogIn'
 import SignUpPage from '../pages/SignUpPage'
 import CreateNewProductPage from '../pages/CreateNewProductPage'
 import ShoppingCartPage from '../pages/ShoppingCartPage'
+import MyOrders from '../pages/MyOrders'
 
 
 export default function Router() {
@@ -28,6 +29,7 @@ export default function Router() {
         <Route path={ROUTS.SIGNUP} element={<SignUpPage />} />
         <Route path={ROUTS.CREATEPRODUCT} element={<CreateNewProductPage />} />
         <Route path={ROUTS.CART} element={<ShoppingCartPage />} />
+        <Route path={ROUTS.MYORDERS} element={<MyOrders/>} />
       </Routes>
     );
 }

@@ -64,15 +64,35 @@ export const createProduct = async (normalizedProduct)=>{
 
 export const createNewOrder = async (orderDetails)=>{
     try{
+        
         const newOrder = await axios.post(`${apiAddress}products/neworder`,orderDetails);
 
         return newOrder;
         
     }catch(err){
+
         console.log(err);
+
     }
 
 
+}
+
+
+
+
+
+export const getMyOrders = async (user) =>{
+
+    try{
+        
+            const myOrders = await axios.get(`${apiAddress}products/orders/${user.email}/${user.name.first}`);
+
+            return myOrders;
+    }
+    catch(err){
+        console.log(err)
+    }
 
 
 }

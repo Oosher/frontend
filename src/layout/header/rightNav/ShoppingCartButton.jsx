@@ -16,7 +16,7 @@ export default function ShoppingCartButton() {
 
   const {cart} = useProductService();
 
-  console.log(cart);
+
 
 
 

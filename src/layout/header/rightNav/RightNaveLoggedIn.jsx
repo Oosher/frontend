@@ -62,6 +62,15 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
             Create new product
           </MenuItem>
         )}
+
+        <MenuItem
+          onClick={() => {
+            Navigate(ROUTS.MYORDERS);
+            changeMenuStatus();
+          }}
+        >
+          My Orders
+        </MenuItem>
       </Menu>
     </>
   );

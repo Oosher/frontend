@@ -45,7 +45,7 @@ export const removeJWT = ()=>localStorage.removeItem("key");
 export const saveToLocalStorageCart = (product) =>{
 
     let cart = getCartFromLocalStorage();
-    console.log(cart);
+
     if (cart) {
 
         let amount=0;
@@ -96,6 +96,9 @@ export const removeItemFromCart = (itemId) =>{
 
 export const getCartFromLocalStorage = ()=>JSON.parse(localStorage.getItem("cart"));
 
+
+
+export const clearShoppingCart = ()=>localStorage.setItem("cart","[]")
 
 
 
