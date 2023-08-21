@@ -10,6 +10,7 @@ const ROUTS = {
     CREATEPRODUCT:"/createnewproduct",
     CART:"/cart",
     MYORDERS:"/myorders",
+    MENAGEORDERS:"menageorders",
 
 }
 

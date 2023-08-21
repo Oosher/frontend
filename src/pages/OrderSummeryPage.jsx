@@ -9,15 +9,17 @@ export default function OrderSummeryPage({orderDetails,totalPrice,orderId}) {
    const {setCart} = useProductService();
 
    const [orders,setOrders] = useState([]);
+    const [price,setPrice] = useState(0);
     useEffect(()=>{
         if (orderDetails.length!==0) {
             setOrders(orderDetails);
+            setPrice(totalPrice)      
         }
         
         clearShoppingCart();
         setCart(getCartFromLocalStorage());
 
-    },[orderDetails,setCart])
+    },[orderDetails,setCart,totalPrice])
     return (
     <Container sx={{marginTop:"4vh"}}>
         <Typography variant="body1" color="initial"sx={{marginBottom:"4vh"}}>Order Number: {orderId}</Typography>
@@ -34,7 +36,7 @@ export default function OrderSummeryPage({orderDetails,totalPrice,orderId}) {
 
         </Box>)}
 
-            <Typography variant="body1" color="initial" sx={{marginTop:"2vh"}}>Total Price:{totalPrice}</Typography>
+            <Typography variant="body1" color="initial" sx={{marginTop:"2vh"}}>Total Price:{price}</Typography>
         
     </Container>
   )

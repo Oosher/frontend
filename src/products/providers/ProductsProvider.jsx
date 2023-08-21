@@ -53,8 +53,6 @@ export default function ProductsProvider({ children }) {
             
         }
 
-
-
   }, [products,categories]);
 
       const addToCart = useCallback((product) => {
@@ -63,7 +61,16 @@ export default function ProductsProvider({ children }) {
       }, [setCart]);
 
 
-  return <ProductContext.Provider value={{ cart, setCart,products,categories  ,currentCategory,setCurrentCategory ,addToCart }}>{children}</ProductContext.Provider>;
+      const fixDate = useCallback((date)=>{
+
+        const newDate = new Date(date);
+
+        return `${newDate.getDate()} / ${newDate.getMonth()} / ${newDate.getFullYear()}  \u00a0\u00a0   ${newDate.getHours()} : ${newDate.getMinutes()<10?"0"+newDate.getMinutes():newDate.getMinutes()}   `
+
+    },[])
+
+
+  return <ProductContext.Provider value={{ cart, setCart,products,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate }}>{children}</ProductContext.Provider>;
 }
 
 

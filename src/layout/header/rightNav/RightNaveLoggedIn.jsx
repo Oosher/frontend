@@ -71,6 +71,15 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
         >
           My Orders
         </MenuItem>
+        {user?.isAdmin && (
+          <MenuItem
+            onClick={() => {
+              changeMenuStatus();
+              Navigate(ROUTS.MENAGEORDERS);
+            }}
+          >Menage Orders
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

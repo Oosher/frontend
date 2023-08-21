@@ -6,6 +6,7 @@ import { getMyOrders } from '../products/services/productServices';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Container, Divider, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ROUTS from '../routes/Routs';
+import { useProductService } from '../products/providers/ProductsProvider';
 
 export default function MyOrders() {
 
@@ -13,7 +14,8 @@ export default function MyOrders() {
 
     const navigate = useNavigate()
     const {user} = useUserService();
-
+    const {fixDate} = useProductService();
+    
     useEffect(()=>{
         if(user){
             getMyOrders(user).then((res)=>{
@@ -27,13 +29,7 @@ export default function MyOrders() {
     },[user])
 
 
-    const fixDate = (date)=>{
 
-        const newDate = new Date(date);
-
-        return `${newDate.getDate()} / ${newDate.getMonth()} / ${newDate.getFullYear()}  \u00a0\u00a0   ${newDate.getHours()} : ${newDate.getMinutes()<10?"0"+newDate.getMinutes():newDate.getMinutes()}   `
-
-    }
 
 
     if(!user){navigate(ROUTS.ROOT)}

@@ -3,6 +3,7 @@ import { getKeyFromLocalStorage } from "../../localStorage/localStorageService";
 
 
 
+
 const apiAddress = "http://localhost:8181/"
 
 
@@ -93,6 +94,29 @@ export const getMyOrders = async (user) =>{
     catch(err){
         console.log(err)
     }
+
+
+}
+
+
+
+export const getAllOrders = async(email,userFirstName) =>{
+
+
+    try{
+
+        const allOrders = await axios.get(`${apiAddress}products/orders/allorders/${email}/${userFirstName}`);
+
+
+        return allOrders;
+        
+    }catch(err){
+
+
+        console.log(err);
+
+    }
+
 
 
 }
