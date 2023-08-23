@@ -15,6 +15,8 @@ export default function OrderManegmentPage() {
 
     const [statuses,setStatuses ] = useState([]);
 
+    const [filter,setFilter] = useState("Sort By")
+
     const {user} = useUserService();
 
     const {fixDate , orderStatus} = useProductService();
@@ -55,11 +57,41 @@ export default function OrderManegmentPage() {
         upDateOrders(allOrders,user._id).then((res)=>window.location.reload());
 
 
+    }
+
+    
+    const filterBySelect = ({target}) =>{
+
+        setFilter(target.value)
+
+
+        switch (target.value) {
+            case "orderStatus":
+                setAllOrders((prev)=>prev.sort((a,b)=>b.orderStatus.localeCompare(a.orderStatus)))
+                break;
+            case "priceAscending":
+                setAllOrders((prev)=>prev.sort((a,b)=>a.totalPriceNis-b.totalPriceNis));
+                break;
+        
+            case "priceDescending":
+                setAllOrders((prev)=>prev.sort((a,b)=>b.totalPriceNis-a.totalPriceNis));
+                break;
+        
+            default:
+                break;
+        }
 
     }
 
     return (
     <Container sx={{marginTop:"3vh"}}>
+        <Typography variant="body1" color="initial">order by:</Typography> 
+        <select value={filter} onChange={filterBySelect}>
+            <option value="SortBy">Sort By</option>
+            <option value="orderStatus">Order Status</option>
+            <option value="priceAscending">Price Ascending</option>
+            <option value="priceDescending">Price Descending</option>
+        </select>
         <Button variant="contained" color="inherit"  sx={{display:"block",width:"17%", margin:"0 auto 20px"}} onClick={saveAllChanges} >
             Save All Changes
         </Button>
