@@ -70,7 +70,30 @@ export default function ProductsProvider({ children }) {
     },[])
 
 
-  return <ProductContext.Provider value={{ cart, setCart,products,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate }}>{children}</ProductContext.Provider>;
+    const orderStatus =useCallback( (status)=>{
+
+
+      switch (status) {
+          case "Order Accepted":
+              
+              return "white";
+
+          case "In delivery":
+              
+              return "lightblue";
+
+          case "Delivered" :
+              
+              return "green";
+      
+          default:
+              return "white";
+      }
+
+  },[])
+
+
+  return <ProductContext.Provider value={{ cart, setCart,products,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus }}>{children}</ProductContext.Provider>;
 }
 
 

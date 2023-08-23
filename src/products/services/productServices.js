@@ -120,3 +120,39 @@ export const getAllOrders = async(email,userFirstName) =>{
 
 
 }
+
+
+export const getOrderStatuses = async ()=>{
+
+
+
+    try{
+
+        const orderStatuses = await axios.get(`${apiAddress}products/orders/statuses`)
+        
+        return orderStatuses.data; 
+
+    }catch(err){
+
+        console.log(err);
+    }
+
+
+}
+export const upDateOrders = async (updatedOrders,userId)=>{
+
+
+
+    try{
+
+        const updateRequest = await axios.put(`${apiAddress}products/orders/updateOrders`,{updatedOrders:updatedOrders,userId:userId})
+        
+        return updateRequest; 
+
+    }catch(err){
+
+        console.log(err);
+    }
+
+
+}

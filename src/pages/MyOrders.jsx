@@ -14,13 +14,13 @@ export default function MyOrders() {
 
     const navigate = useNavigate()
     const {user} = useUserService();
-    const {fixDate} = useProductService();
+    const {fixDate,orderStatus} = useProductService();
     
     useEffect(()=>{
         if(user){
             getMyOrders(user).then((res)=>{
-                if (res.data.length !==0) {
-                    setMyOrders(res.data) 
+                if (res?.data.length !==0) {
+                    setMyOrders(res?.data) 
                 }
                 
                 })
@@ -29,6 +29,7 @@ export default function MyOrders() {
     },[user])
 
 
+  
 
 
 
@@ -44,9 +45,10 @@ export default function MyOrders() {
    <Container>
     <Typography variant="h2" color="initial" sx={{textAlign:"center",marginTop:"2vh"}}>My Orders</Typography>
 
-    {myOrders?.map((order)=><Accordion sx={{width:"100%"}} key={order._id}>
+    {myOrders?.map((order)=><Accordion sx={{width:"100%",bgcolor:orderStatus(order.orderStatus)}} key={order._id}>
     <AccordionSummary sx={{display:"flex",justifyContent:"space-between"}} >
             <Typography variant="body1" color="initial">Order Number : {order._id}  </Typography>
+            <Typography variant="body1" color="initial" sx={{marginLeft:"15%"}}>Order Status : {order.orderStatus}  </Typography>
             <Typography variant="body1" color="initial" sx={{position:"absolute",right:"20px"}}>Final Price : &#8362;{order.totalPriceNis}</Typography>
         </AccordionSummary>
 
