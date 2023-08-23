@@ -30,7 +30,7 @@ export default function Index() {
 
 
 
-    },[page,products,currentCategory])
+    },[products,currentCategory])
 
 
 

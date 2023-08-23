@@ -13,23 +13,24 @@ export default function OrderSummeryPage({orderDetails,totalPrice,orderId}) {
     useEffect(()=>{
         if (orderDetails.length!==0) {
             setOrders(orderDetails);
-            setPrice(totalPrice)      
+            setPrice(totalPrice);
+            clearShoppingCart();
+            setCart(getCartFromLocalStorage());     
         }
         
-        clearShoppingCart();
-        setCart(getCartFromLocalStorage());
 
     },[orderDetails,setCart,totalPrice])
     return (
     <Container sx={{marginTop:"4vh"}}>
         <Typography variant="body1" color="initial"sx={{marginBottom:"4vh"}}>Order Number: {orderId}</Typography>
-        {orders?.map((product)=><Box display="flex" justifyContent="space-between">
-            <Typography variant="body1" color="initial">
+        {orders?.map((product)=><Box display="flex" width="100%" justifyContent="space-between" alignItems="center">
+            <Typography variant="body1" color="initial" width="15%" >
                 &#8362;{product.price * (product.amount ? product.amount : 1)} Amount: {product.amount ? product.amount : 1}
             </Typography>
-            <Typography variant="body1" color="initial" sx={{ textAlign: "end" }}>
-                {product.name}
-            </Typography>
+
+                <Typography variant="body1" color="initial">
+                    {product.name}
+                </Typography>
             
             <CardMedia sx={{ width: "5vw" }} component="img" src={product.imageArray[0].imageUrl} alt={product.imageArray[0].imageAlt} />
 
