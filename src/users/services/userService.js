@@ -49,3 +49,31 @@ export const register = async (registerData)=>{
 }
 
 
+
+
+
+
+
+
+
+
+export const updateUser = async(updatedUser) =>{
+
+    try{
+
+
+        const response = await axios.put(`${apiAddress}users`,updatedUser);
+
+
+        return response.data;
+
+    }catch(err){
+
+
+        return err.response;
+
+    }
+
+
+}
+

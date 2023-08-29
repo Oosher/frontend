@@ -40,8 +40,27 @@ const schema =  {
 
                     zip:Joi.string().ruleset.regex(/^\d{5}(?:[-\s]\d{4})?$/).rule({message:"zip code is invalid"}).required(),
 
+                    name:Joi.object({
+                        first:Joi.string(),
+                        last:Joi.string(),
+                    }).allow(""),
 
-
+                    old:Joi.string()
+                    .ruleset.regex(
+                        /((?=.*\d{1})(?=.*[A-Z]{1})(?=.*[a-z]{1})(?=.*[!@#$%^&*-]{1}).{7,20})/
+                    )
+                    .rule({
+                    message:
+                        'user "password" must be at least nine characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-',
+                    }).allow(""),
+                    new:Joi.string()
+                    .ruleset.regex(
+                        /((?=.*\d{1})(?=.*[A-Z]{1})(?=.*[a-z]{1})(?=.*[!@#$%^&*-]{1}).{7,20})/
+                    )
+                    .rule({
+                    message:
+                        'user "password" must be at least nine characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-',
+                    }).allow(""),
 
     };
 

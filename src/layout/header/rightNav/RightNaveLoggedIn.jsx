@@ -52,6 +52,14 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
         >
           Log out
         </MenuItem>
+        <MenuItem
+          onClick={() => {
+            Navigate(ROUTS.USERPAGE);
+            changeMenuStatus();
+          }}
+        >
+          User Page
+        </MenuItem>
         {user?.isAdmin && (
           <MenuItem
             onClick={() => {
