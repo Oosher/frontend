@@ -14,7 +14,7 @@ export default function ProductsProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [products,setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [currentCategory , setCurrentCategory] = useState(null);
+  const [currentCategory , setCurrentCategory] = useState("");
   
 
   useEffect(() => {
