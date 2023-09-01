@@ -3,7 +3,7 @@
 
 
 
-import { Box, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material'
+import { Box, Divider, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -32,7 +32,7 @@ export default function LeftNav() {
         <IconButton onClick={() => setMenuOpen((prev) => !prev)}>
           <MenuIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
-        <Link to={ROUTS.ROOT} onClick={() =>{ setCurrentCategory(null)}} style={{ color: "black" }}>
+        <Link to={ROUTS.ROOT} onClick={() =>{ setCurrentCategory("")}} style={{ color: "black" }}>
           <IconButton>
             <HomeIcon sx={{ fontSize: "5rem" }} />
           </IconButton>
@@ -56,19 +56,21 @@ export default function LeftNav() {
             </MenuItem>
           ))}
 
-        <SwipeableDrawer anchor="left" open={menuOpen} onClose={() => setMenuOpen((prev) => !prev)}>
-          <Box sx={{ marginTop: "107px" }}>
-            {categories?.map((category) => (
+        <SwipeableDrawer anchor="left" open={menuOpen} onClose={() => setMenuOpen((prev) => !prev) } >
+          <Box sx={{ marginTop: "107px" ,fontSize:"1.7rem"}}>
+            {categories?.map((category) => (<Box key={category}>
               <ListItem
                 onClick={() => {
                   navigate(ROUTS.ROOT);
                   setCurrentCategory(category);
                   setMenuOpen((prev) => !prev);
                 }}
-                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" }, width: "9vw" }}
+                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" }, width: "12vw" }}
               >
                 {category}
               </ListItem>
+              <Divider/>
+              </Box>
             ))}
           </Box>
         </SwipeableDrawer>

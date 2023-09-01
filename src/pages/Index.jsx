@@ -36,7 +36,7 @@ export default function Index() {
       const search = ({target})=>{
 
         if (target.value==="") {
-          setCurrentCategory(null);
+          setCurrentCategory("");
         }else{
           setCurrentCategory(target.value);
         }

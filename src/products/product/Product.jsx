@@ -16,7 +16,7 @@ export default function Product({product}) {
     
 
     return (
-        <Card sx={{height:"30vh",marginTop:"1.5vh"}} >
+        <Card sx={{height:"fit-content",marginTop:"1.5vh"}} >
             <ProductHead title={product?.name} src={product?.imageArray[0].imageUrl} productId={product._id} />
             <ProductActions price={product?.price} addToCart={addToCart} product={product}/>
         </Card>
