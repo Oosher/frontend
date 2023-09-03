@@ -62,6 +62,46 @@ export const createProduct = async (normalizedProduct)=>{
         }
 }
 
+export const deleteProduct= async (productId,userId) =>{
+    try{
+        const res = await axios.delete(`${apiAddress}products/${productId}/${userId}`);
+
+        return res.data;
+
+    }catch(err){
+
+        console.log(err);
+        
+    }
+
+
+
+
+}
+
+
+
+
+
+export const updateProduct = async(normalizedProduct) =>{
+
+
+    try{
+        console.log(normalizedProduct);
+        const res = await axios.put(`${apiAddress}products/${normalizedProduct.id}`,normalizedProduct)
+
+        return res.data;
+
+    }catch(err){
+        console.log(normalizedProduct);
+        console.log(err);
+        
+    }
+
+
+
+}
+
 
 export const createNewOrder = async (orderDetails)=>{
     try{
@@ -160,19 +200,6 @@ export const upDateOrders = async (updatedOrders,userId)=>{
 
 
 
-export const deleteProduct= async (productId,userId) =>{
-    try{
-        const res = await axios.delete(`${apiAddress}products/${productId}/${userId}`);
-
-        return res.data;
-
-    }catch(err){
-
-        console.log(err);
-        
-    }
 
 
 
-
-}

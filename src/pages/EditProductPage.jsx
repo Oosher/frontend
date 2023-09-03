@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from 'react'
 import ProductForm from './ProductForm'
-import { getProduct } from '../products/services/productServices';
+import { getProduct, updateProduct } from '../products/services/productServices';
 import { useParams } from 'react-router-dom';
 import useData from '../hooks/useData';
 import productSchema from '../products/validation/productValidation';
@@ -22,10 +22,10 @@ export default function EditProductPage() {
         getProduct(id).then((res)=>setProduct(mapProductToModel(res)))
     },[id]);
 
-    console.log(product);
+
     return (
         <div>
-            <ProductForm numberOfImages={10} inputValue={product} updateData={updateData} errorInfo={errors} setInputValue={setProduct} saveButtonText="Edit product"/>
+            <ProductForm numberOfImages={10} inputValue={product} updateData={updateData} errorInfo={errors} setInputValue={setProduct} saveButtonText="Edit product" submissionFunc={updateProduct}/>
         </div>
     )
 }

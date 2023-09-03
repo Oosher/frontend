@@ -8,7 +8,7 @@ import { Button, Container, MenuItem, Select, TextField } from '@mui/material';
     const imageNumArr = [1,2,3,4,5,6,7,8,9,10];
 
     const arr = imageNumArr.slice(0,numberOfImages);
-
+    
     const { categories } = useProductService();
     const submit = (e)=>{
         e.preventDefault();

@@ -25,6 +25,7 @@ const mapProductToModel = (product) =>({
  imageAlt9: product?.imageArray[8].imageAlt, 
  imageAlt10: product?.imageArray[9].imageAlt, 
  select:product?.category,
+ id:product?._id,
  });
 
 
