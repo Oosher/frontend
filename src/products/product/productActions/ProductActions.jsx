@@ -9,11 +9,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteProduct } from '../../services/productServices';
 import { useProductService } from '../../providers/ProductsProvider';
+import { useNavigate } from 'react-router-dom';
+import ROUTS from '../../../routes/Routs';
 
 export default function ProductActions({price,addToCart,product}) {
 
   const {user} = useUserService()
-  const {products,setProducts} = useProductService()
+  const {products,setProducts} = useProductService();
+  const navigate = useNavigate();
 
   const handleDelete = () =>{
 
@@ -29,7 +32,7 @@ export default function ProductActions({price,addToCart,product}) {
             <IconButton  onClick={handleDelete}>
               <DeleteIcon/>
             </IconButton>
-            <IconButton>
+            <IconButton onClick={()=>navigate(`${ROUTS.EDITPRODUCTPAGE}/${product?._id}`)}>
               <EditIcon/>
             </IconButton>
           </>}

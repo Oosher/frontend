@@ -1,0 +1,31 @@
+
+
+
+
+
+import React, { useEffect, useState } from 'react'
+import ProductForm from './ProductForm'
+import { getProduct } from '../products/services/productServices';
+import { useParams } from 'react-router-dom';
+import useData from '../hooks/useData';
+import productSchema from '../products/validation/productValidation';
+import mapProductToModel from '../products/services/mapProductToModel';
+
+export default function EditProductPage() {
+    const {id} = useParams();
+    const [product,setProduct] = useState({});
+    const [errors,setErrors] = useState({});
+    
+
+    const {updateData} = useData(setProduct,productSchema,setErrors);
+    useEffect(()=>{
+        getProduct(id).then((res)=>setProduct(mapProductToModel(res)))
+    },[id]);
+
+    console.log(product);
+    return (
+        <div>
+            <ProductForm numberOfImages={10} inputValue={product} updateData={updateData} errorInfo={errors} setInputValue={setProduct} saveButtonText="Edit product"/>
+        </div>
+    )
+}

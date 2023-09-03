@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import useData from '../hooks/useData';
 import productSchema from '../products/validation/productValidation';
 import ProductForm from './ProductForm';
+import { createProduct } from '../products/services/productServices';
 
 
 export default function CreateNewProductPage() {
@@ -20,7 +21,7 @@ export default function CreateNewProductPage() {
 
 
 
-    if (selected) return <ProductForm inputValue={formValue} numberOfImages={val}  updateData= {updateData} errorInfo={errorInfo} setInputValue={setFormValue}/>
+    if (selected) return <ProductForm inputValue={formValue} numberOfImages={val}  updateData= {updateData} errorInfo={errorInfo} setInputValue={setFormValue} saveButtonText="Create new Product" submissionFunc={createProduct}/>
   
    
 
