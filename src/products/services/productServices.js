@@ -156,3 +156,23 @@ export const upDateOrders = async (updatedOrders,userId)=>{
 
 
 }
+
+
+
+
+export const deleteProduct= async (productId,userId) =>{
+    try{
+        const res = await axios.delete(`${apiAddress}products/${productId}/${userId}`);
+
+        return res.data;
+
+    }catch(err){
+
+        console.log(err);
+        
+    }
+
+
+
+
+}

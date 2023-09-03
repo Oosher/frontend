@@ -12,7 +12,6 @@ import { Button, Container, MenuItem, Select, TextField } from '@mui/material';
     const arr = imageNumArr.slice(0,numberOfImages);
   
     const { categories } = useProductService();
-    
     const submit = (e)=>{
         e.preventDefault();
         if (Object.keys(errorInfo).length === 0) {

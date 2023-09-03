@@ -93,7 +93,7 @@ export default function ProductsProvider({ children }) {
   },[])
 
 
-  return <ProductContext.Provider value={{ cart, setCart,products,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ cart, setCart,products,setProducts,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus }}>{children}</ProductContext.Provider>;
 }
 
 

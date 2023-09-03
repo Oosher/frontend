@@ -13,20 +13,28 @@ import { useUserService } from '../../../users/provider/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import ROUTS from '../../../routes/Routs';
 import ShoppingCartButton from './ShoppingCartButton';
+import { useProductService } from '../../../products/providers/ProductsProvider';
 
 
 export default function RightNaveLoggedIn({userName,imageSrc}) {
 
   const [isOpen,setIsOpen] = useState(false);
   const {logOut,user} = useUserService()
+  const {setCurrentCategory} = useProductService()
   const Navigate = useNavigate();
 
   const changeMenuStatus = useCallback( ()=>{
 
-    setIsOpen((prev)=>!prev)
+    setIsOpen((prev)=>!prev);
 
+  },[]);
+
+  const clearCategory = ()=>{
+
+    setCurrentCategory("")
+
+  }
   
-  },[])
 
   return (
     <>
@@ -48,6 +56,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
           onClick={() => {
             logOut();
             changeMenuStatus();
+            clearCategory();
           }}
         >
           Log out
@@ -56,6 +65,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
           onClick={() => {
             Navigate(ROUTS.USERPAGE);
             changeMenuStatus();
+            clearCategory();
           }}
         >
           User Page
@@ -65,6 +75,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
             onClick={() => {
               changeMenuStatus();
               Navigate(ROUTS.CREATEPRODUCT);
+              clearCategory();
             }}
           >
             Create new product
@@ -75,6 +86,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
           onClick={() => {
             Navigate(ROUTS.MYORDERS);
             changeMenuStatus();
+            clearCategory();
           }}
         >
           My Orders
@@ -84,6 +96,7 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
             onClick={() => {
               changeMenuStatus();
               Navigate(ROUTS.MENAGEORDERS);
+              clearCategory();
             }}
           >Menage Orders
           </MenuItem>
