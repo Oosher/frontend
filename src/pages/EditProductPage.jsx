@@ -13,7 +13,7 @@ import mapProductToModel from '../products/services/mapProductToModel';
 
 export default function EditProductPage() {
     const {id} = useParams();
-    const [product,setProduct] = useState({});
+    const [product,setProduct] = useState(null);
     const [errors,setErrors] = useState({});
     
 
@@ -25,7 +25,7 @@ export default function EditProductPage() {
 
     return (
         <div>
-            <ProductForm numberOfImages={10} inputValue={product} updateData={updateData} errorInfo={errors} setInputValue={setProduct} saveButtonText="Edit product" submissionFunc={updateProduct}/>
+            <ProductForm numberOfImages={10} inputValue={product?product:productSchema} updateData={updateData} errorInfo={errors} setInputValue={setProduct} saveButtonText="Edit product" submissionFunc={updateProduct}/>
         </div>
     )
 }

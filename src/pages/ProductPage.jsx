@@ -49,7 +49,7 @@ export default function ProductPage() {
           {product?.description}
         </Typography>
 
-        <Button variant="contained" color="info" sx={{ display: "flex", padding: "0", width: "100%", justifyContent: "center", height: "60%", gap: "0.2vw", alignSelf: "end", gridRow: "4/5", gridColumn: "2/3", margin: "0" }}  onClick={()=>addToCart(product)}>
+        <Button variant="contained" color="info" sx={{ display: "flex", padding: "0", width: "100%", justifyContent: "center", height: "7vh", gap: "0.2vw", alignSelf: "end", gridRow: "4/5", gridColumn: "2/3", margin: "0 1vh 0 0" }}  onClick={()=>addToCart(product)}>
           <Typography variant="body1" color="initial" sx={{ color: "white", alignSelf: "center", fontSize: "1.8rem", fontWeight: "bold" }}>
             &#8362;{product?.price}
           </Typography>

@@ -3,7 +3,7 @@
 
 
 
-import { Box, Divider, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material'
+import { Box, Divider, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react'
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -23,6 +23,8 @@ export default function LeftNav() {
 
     const navigate = useNavigate();
 
+    const mobile = useMediaQuery("(max-width:600px)");
+
 
   
 
@@ -38,7 +40,7 @@ export default function LeftNav() {
           </IconButton>
         </Link>
 
-        {categories
+        {mobile? null :categories
           .filter((category, index) => index < 6)
           .map((category) => (
             <MenuItem sx={{ borderBottom: currentCategory === category ? "solid black 2px" : "0px" }}>
@@ -56,8 +58,8 @@ export default function LeftNav() {
             </MenuItem>
           ))}
 
-        <SwipeableDrawer anchor="left" open={menuOpen} onClose={() => setMenuOpen((prev) => !prev) } >
-          <Box sx={{ marginTop: "107px" ,fontSize:"1.7rem"}}>
+        <SwipeableDrawer anchor="left"  open={menuOpen} onClose={() => setMenuOpen((prev) => !prev) } >
+          <Box sx={{ marginTop: "107px" ,fontSize:"1.7rem",width: "fit-content"}}>
             {categories?.map((category) => (<Box key={category}>
               <ListItem
                 onClick={() => {
@@ -65,7 +67,7 @@ export default function LeftNav() {
                   setCurrentCategory(category);
                   setMenuOpen((prev) => !prev);
                 }}
-                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" }, width: "12vw" }}
+                sx={{ "&:hover": { bgcolor: "lightblue", cursor: "pointer" },  }}
               >
                 {category}
               </ListItem>

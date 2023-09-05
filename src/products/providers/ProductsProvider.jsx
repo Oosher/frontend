@@ -65,7 +65,7 @@ export default function ProductsProvider({ children }) {
 
         const newDate = new Date(date);
 
-        return `${newDate.getDate()} / ${newDate.getMonth()} / ${newDate.getFullYear()}  \u00a0\u00a0   ${newDate.getHours()} : ${newDate.getMinutes()<10?"0"+newDate.getMinutes():newDate.getMinutes()}   `
+        return `${newDate.getDate()} / ${newDate.getMonth()+1} / ${newDate.getFullYear()}  \u00a0\u00a0   ${newDate.getHours()} : ${newDate.getMinutes()<10?"0"+newDate.getMinutes():newDate.getMinutes()}   `
 
     },[])
 
