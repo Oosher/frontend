@@ -2,6 +2,7 @@ import jwtDecode from "jwt-decode";
 
 
 
+
 export const saveUser = (webToken)=>{
 
     localStorage.setItem("key",webToken,);
@@ -98,7 +99,62 @@ export const getCartFromLocalStorage = ()=>JSON.parse(localStorage.getItem("cart
 
 
 
-export const clearShoppingCart = ()=>localStorage.setItem("cart","[]")
+export const clearShoppingCart = ()=>localStorage.setItem("cart","[]");
+
+
+
+
+
+//LIKED PRODUCTS
+
+
+
+
+
+export const saveProductToLocalStorage = async (product)=>{
+   
+    let likedProducts = await getLikedProducts();
+    console.log(likedProducts);
+    if (likedProducts) {
+     
+        likedProducts.push(product);
+
+        localStorage.setItem("likedProducts",JSON.stringify(likedProducts));
+        
+    }else{
+        likedProducts=[];
+        likedProducts.push(product);
+
+        localStorage.setItem("likedProducts",JSON.stringify(likedProducts));
+    }
+
+
+
+}
+
+
+export const getLikedProducts = ()=>{
+
+    return JSON.parse(localStorage.getItem("likedProducts"));
+
+}
+
+
+
+
+
+
+
+export const removeLikedProduct =async (product) =>{
+
+  const updatedLikedProducts = await getLikedProducts();
+
+   await localStorage.setItem("likedProducts",JSON.stringify(updatedLikedProducts.filter((prod)=>prod.name!==product.name)))
+
+    if (await !updatedLikedProducts) {
+       await localStorage.setItem("likedProducts","[]")
+    }
+}
 
 
 

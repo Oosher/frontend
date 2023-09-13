@@ -23,7 +23,7 @@ export default function LeftNav() {
 
     const navigate = useNavigate();
 
-    const mobile = useMediaQuery("(max-width:600px)");
+    const mobile = useMediaQuery("(max-width:1300px)");
 
 
   

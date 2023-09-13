@@ -7,14 +7,14 @@
 
 
 
-import {  Avatar, IconButton, Menu, MenuItem } from '@mui/material'
+import {  Avatar, Box, IconButton, Menu, MenuItem } from '@mui/material'
 import React, { useCallback, useState } from 'react'
 import { useUserService } from '../../../users/provider/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import ROUTS from '../../../routes/Routs';
 import ShoppingCartButton from './ShoppingCartButton';
 import { useProductService } from '../../../products/providers/ProductsProvider';
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function RightNaveLoggedIn({userName,imageSrc}) {
 
@@ -37,7 +37,10 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
   
 
   return (
-    <>
+    <Box sx={{display:"flex",alignItems:"center"}}>
+      <IconButton sx={{width:"fit-content",height:"fit-content"}}  onClick={()=>{Navigate(ROUTS.LIKEDPRODUCTS)}}>
+        <FavoriteIcon  sx={{fontSize:"4rem" , color:"red"}}/>
+      </IconButton>
       <ShoppingCartButton />
       <IconButton sx={{ alignSelf: "center", marginRight: "2vw" }} onClick={changeMenuStatus}>
         <Avatar alt={`${userName} profile picture`} src={imageSrc} sx={{ width: "80px", height: "80px" }} />
@@ -102,6 +105,6 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
           </MenuItem>
         )}
       </Menu>
-    </>
+    </Box>
   );
 }

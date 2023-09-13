@@ -3,7 +3,7 @@
 
 
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { getCartFromLocalStorage, saveToLocalStorageCart,  } from '../../localStorage/localStorageService';
+import { getCartFromLocalStorage, getLikedProducts, saveToLocalStorageCart,  } from '../../localStorage/localStorageService';
 import { getProducts } from '../services/productServices';
 
 
@@ -15,10 +15,13 @@ export default function ProductsProvider({ children }) {
   const [products,setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategory , setCurrentCategory] = useState("");
+  const [likedItems , setLikedItems] = useState([]);
   
 
   useEffect(() => {
-    
+
+        setLikedItems(getLikedProducts()?getLikedProducts() :[]);
+
         if (getCartFromLocalStorage()) {
         
             setCart(getCartFromLocalStorage());
@@ -93,7 +96,7 @@ export default function ProductsProvider({ children }) {
   },[])
 
 
-  return <ProductContext.Provider value={{ cart, setCart,products,setProducts,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ cart, setCart,products,setProducts,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus,setLikedItems,likedItems }}>{children}</ProductContext.Provider>;
 }
 
 

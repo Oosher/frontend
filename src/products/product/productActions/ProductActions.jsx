@@ -2,7 +2,7 @@
 
 
 import { Box, CardActions, IconButton, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useUserService } from '../../../users/provider/UserProvider';
 import EditIcon from '@mui/icons-material/Edit';
@@ -11,17 +11,50 @@ import { deleteProduct } from '../../services/productServices';
 import { useProductService } from '../../providers/ProductsProvider';
 import { useNavigate } from 'react-router-dom';
 import ROUTS from '../../../routes/Routs';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { getLikedProducts, removeLikedProduct, saveProductToLocalStorage } from '../../../localStorage/localStorageService';
 
 export default function ProductActions({price,addToCart,product}) {
 
+  const [isLiked , setIsLiked] = useState(false);
   const {user} = useUserService()
-  const {products,setProducts} = useProductService();
+  const {products,setProducts,likedItems,setLikedItems} = useProductService();
   const navigate = useNavigate();
+  
 
+  useEffect(()=>{
+    if (likedItems.findIndex(prod=>prod.name===product.name)===-1){
+      setIsLiked(false);
+    }
+    else{
+      setIsLiked(true);
+    }
+  },[likedItems,product.name])
+
+
+  
   const handleDelete = () =>{
 
     deleteProduct(product?._id,user?._id);
     setProducts(products?.filter((prod)=>prod._id!==product?._id))
+
+  }
+
+  const handleLike= async()=>{
+
+
+    if (likedItems.findIndex(prod=>prod.name===product.name)===-1) {
+      await saveProductToLocalStorage(product);
+      setIsLiked(true);
+      setLikedItems( await getLikedProducts());
+    }
+    else{
+      setIsLiked(false);
+      await removeLikedProduct(product);
+      setLikedItems( await getLikedProducts());
+    }
+    
+  
 
   }
 
@@ -35,6 +68,9 @@ export default function ProductActions({price,addToCart,product}) {
             <IconButton onClick={()=>navigate(`${ROUTS.EDITPRODUCTPAGE}/${product?._id}`)}>
               <EditIcon/>
             </IconButton>
+            <IconButton onClick={handleLike} >
+              <FavoriteBorderIcon sx={{color:isLiked?"red":null}}/>
+          </IconButton>
           </>}
         </Box>
         <Box display="flex" alignItems="center">
@@ -44,6 +80,7 @@ export default function ProductActions({price,addToCart,product}) {
           <IconButton onClick={() => addToCart(product)} >
             <ShoppingCartIcon />
           </IconButton>
+      
         </Box>
       </CardActions>
     );

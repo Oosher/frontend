@@ -20,6 +20,7 @@ import MyOrders from '../pages/MyOrders'
 import OrderManegmentPage from '../pages/OrderManegmentPage'
 import UserPage from '../pages/UserPage'
 import EditProductPage from '../pages/EditProductPage'
+import LikedProducts from '../pages/LikedProducts'
 
 
 export default function Router() {
@@ -36,6 +37,7 @@ export default function Router() {
         <Route path={ROUTS.MENAGEORDERS} element={<OrderManegmentPage/>} />
         <Route path={ROUTS.USERPAGE} element={<UserPage/>} />
         <Route path={`${ROUTS.EDITPRODUCTPAGE}/:id`} element={<EditProductPage />} />
+        <Route path={ROUTS.LIKEDPRODUCTS} element={<LikedProducts/>} />
       </Routes>
     );
 }
