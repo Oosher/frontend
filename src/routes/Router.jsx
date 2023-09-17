@@ -21,6 +21,7 @@ import OrderManegmentPage from '../pages/OrderManegmentPage'
 import UserPage from '../pages/UserPage'
 import EditProductPage from '../pages/EditProductPage'
 import LikedProducts from '../pages/LikedProducts'
+import AboutPage from '../pages/AboutPage'
 
 
 export default function Router() {
@@ -38,6 +39,7 @@ export default function Router() {
         <Route path={ROUTS.USERPAGE} element={<UserPage/>} />
         <Route path={`${ROUTS.EDITPRODUCTPAGE}/:id`} element={<EditProductPage />} />
         <Route path={ROUTS.LIKEDPRODUCTS} element={<LikedProducts/>} />
+        <Route path={ROUTS.ABOUTUS} element={<AboutPage/>} />
       </Routes>
     );
 }

@@ -13,7 +13,8 @@ const ROUTS = {
     MENAGEORDERS:"/menageorders",
     USERPAGE:"userpage",
     EDITPRODUCTPAGE:"/editproductpage",
-    LIKEDPRODUCTS:"/likedproducts"
+    LIKEDPRODUCTS:"/likedproducts",
+    ABOUTUS:"/aboutus"
 
 }
 
