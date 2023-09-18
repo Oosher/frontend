@@ -18,14 +18,20 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function RightNaveLoggedIn({userName,imageSrc}) {
 
-  const [isOpen,setIsOpen] = useState(false);
+  const [anchorEl,setAnchorEl] = useState(null);
   const {logOut,user} = useUserService()
   const {setCurrentCategory} = useProductService()
   const Navigate = useNavigate();
 
-  const changeMenuStatus = useCallback( ()=>{
+  const {mobile} = useProductService();
 
-    setIsOpen((prev)=>!prev);
+  const menuOpen = (e)=>{
+    setAnchorEl(e.currentTarget)
+  }
+
+  const changeMenuStatus = useCallback( (e)=>{
+
+    setAnchorEl(null);
 
   },[]);
 
@@ -37,23 +43,32 @@ export default function RightNaveLoggedIn({userName,imageSrc}) {
   
 
   return (
-    <Box sx={{display:"flex",alignItems:"center"}}>
+    <Box sx={{display:"flex",alignItems:"center",justifyContent:"center",justifyItems:"center",alignContent:"center",height:"100%"}}>
       <IconButton sx={{width:"fit-content",height:"fit-content"}}  onClick={()=>{Navigate(ROUTS.LIKEDPRODUCTS)}}>
-        <FavoriteIcon  sx={{fontSize:"4rem" , color:"red"}}/>
+        <FavoriteIcon  sx={{fontSize:mobile?"3rem":"4rem" , color:"red"}}/>
       </IconButton>
       <ShoppingCartButton />
-      <IconButton sx={{ alignSelf: "center", marginRight: "2vw" }} onClick={changeMenuStatus}>
-        <Avatar alt={`${userName} profile picture`} src={imageSrc} sx={{ width: "80px", height: "80px" }} />
+      
+      <IconButton sx={{ alignSelf: "center", marginRight: "2vw" }} onClick={menuOpen}>
+        <Avatar alt={`${userName} profile picture`} src={imageSrc} sx={{ width:mobile?"50px" : "80px", height:mobile?"50px" : "80px"}} />
       </IconButton>
       <Menu
+      
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
         }}
+        anchorEl={anchorEl}
         keepMounted
-        open={isOpen}
+        open={Boolean(anchorEl)}
         onClose={changeMenuStatus}
-        sx={{ marginLeft: "-1.3vw", marginTop: "90px" }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+
+        sx={{marginTop:"90px",position:"absolute"}}
+        
       >
         <MenuItem
           onClick={() => {

@@ -45,7 +45,7 @@ export default function Index() {
       }
 
 
-    if (products===[])  return  <Typography variant="body1" color="initial">No products where found found</Typography>
+    if (products?.length===0|| !products)  return  <Typography variant="h3" color="initial" sx={{textAlign:"center",marginTop:"10vh"}}>No products where found found</Typography>
 
 
     return (
@@ -57,7 +57,7 @@ export default function Index() {
       onChange={search}
       label="Search by name or by category"
       
-      sx={{ marginTop: '2vh', position: 'sticky', top: '0', zIndex: 1 }}
+      sx={{ marginTop: '2vh', position: 'sticky', top: '0', zIndex: 1 ,bgcolor:"white"}}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">

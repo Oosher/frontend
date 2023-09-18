@@ -30,7 +30,7 @@ export default function LeftNav() {
 
 
     return (
-      <Toolbar>
+      <Toolbar sx={{width:"fit-content"}}>
         <IconButton onClick={() => setMenuOpen((prev) => !prev)}>
           <MenuIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
@@ -40,8 +40,7 @@ export default function LeftNav() {
           </IconButton>
         </Link>
 
-        {mobile? null :categories
-          .filter((category, index) => index < 6)
+        {mobile? null :categories?.filter((category, index) => index < 6)
           .map((category) => (
             <MenuItem sx={{ borderBottom: currentCategory === category ? "solid black 2px" : "0px" }}>
               <ListItem

@@ -12,7 +12,8 @@ export default function ShoppingCartButton() {
 
 
   const navigate = useNavigate();
-  
+
+  const {mobile} = useProductService();
 
   const {cart} = useProductService();
 
@@ -23,7 +24,7 @@ export default function ShoppingCartButton() {
   return (
     <IconButton onClick={()=>{navigate(ROUTS.CART)}}>
       <Badge badgeContent={cart.length} color="error" sx={{ fontSize: "3rem" }}>
-        <ShoppingCart sx={{ fontSize: "4rem" }} />
+        <ShoppingCart sx={{ fontSize: mobile?"3rem":"4rem" }} />
       </Badge>
     </IconButton>
   );

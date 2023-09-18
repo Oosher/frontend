@@ -5,6 +5,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { getCartFromLocalStorage, getLikedProducts, saveToLocalStorageCart,  } from '../../localStorage/localStorageService';
 import { getProducts } from '../services/productServices';
+import { useMediaQuery } from '@mui/material';
 
 
 
@@ -17,6 +18,7 @@ export default function ProductsProvider({ children }) {
   const [currentCategory , setCurrentCategory] = useState("");
   const [likedItems , setLikedItems] = useState([]);
   
+  const mobile = useMediaQuery("(max-width:1300px)");
 
   useEffect(() => {
 
@@ -30,19 +32,19 @@ export default function ProductsProvider({ children }) {
             setCart([]);
         }
 
-        if (products.length===0) {
+        if (products?.length===0) {
 
           getProducts().then((res)=>setProducts(res))
         
           
         }else{
-          if(categories.length===0){
+          if(categories?.length===0){
             let catArr = []
-            products.map((product) => {
+            products?.map((product) => {
 
-              if (catArr.indexOf(product.category)===-1) {
+              if (catArr?.indexOf(product.category)===-1) {
 
-                  catArr.push(product.category)
+                  catArr?.push(product.category)
                 
               }
               return "";
@@ -96,7 +98,7 @@ export default function ProductsProvider({ children }) {
   },[])
 
 
-  return <ProductContext.Provider value={{ cart, setCart,products,setProducts,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus,setLikedItems,likedItems }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ cart, setCart,products,setProducts,categories ,currentCategory,setCurrentCategory ,addToCart ,fixDate, orderStatus,setLikedItems,likedItems,mobile }}>{children}</ProductContext.Provider>;
 }
 
 

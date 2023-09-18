@@ -87,13 +87,13 @@ export const updateProduct = async(normalizedProduct) =>{
 
 
     try{
-        console.log(normalizedProduct);
+        
         const res = await axios.put(`${apiAddress}products/${normalizedProduct.id}`,normalizedProduct)
 
         return res.data;
 
     }catch(err){
-        console.log(normalizedProduct);
+
         console.log(err);
         
     }
