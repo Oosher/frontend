@@ -3,7 +3,7 @@
 
 
 
-import { Box, Divider, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography, useMediaQuery } from '@mui/material'
+import { Box, Divider, IconButton, ListItem, MenuItem, SwipeableDrawer, Toolbar, Typography} from '@mui/material'
 import React, { useState } from 'react'
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -23,7 +23,7 @@ export default function LeftNav() {
 
     const navigate = useNavigate();
 
-    const mobile = useMediaQuery("(max-width:1300px)");
+    const {mobile} = useProductService();
 
 
   
@@ -32,11 +32,11 @@ export default function LeftNav() {
     return (
       <Toolbar sx={{width:"fit-content"}}>
         <IconButton onClick={() => setMenuOpen((prev) => !prev)}>
-          <MenuIcon sx={{ fontSize: "3rem" }} />
+          <MenuIcon sx={{ fontSize: mobile?"2rem":"3rem" }} />
         </IconButton>
         <Link to={ROUTS.ROOT} onClick={() =>{ setCurrentCategory("")}} style={{ color: "black" }}>
           <IconButton>
-            <HomeIcon sx={{ fontSize: "5rem" }} />
+            <HomeIcon sx={{ fontSize: mobile?"3rem":"5rem" }} />
           </IconButton>
         </Link>
 

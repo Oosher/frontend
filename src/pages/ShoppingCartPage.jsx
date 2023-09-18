@@ -16,7 +16,7 @@ import OrderSummeryPage from './OrderSummeryPage';
 
 export default function ShoppingCartPage() {
 
-  const {cart,setCart} = useProductService();
+  const {cart,setCart,mobile} = useProductService();
 
   const {user} = useUserService();
 
@@ -79,7 +79,7 @@ useEffect(()=>{
     <Container sx={{ width: "fit-content" }}>
       {cart?.map((product, i) => {
         return (
-          <Box sx={{ display: "flex", height: "7vh", margin: "1vh", justifyContent: "flex-end", gap: "1vw" }} key={i}>
+          <Box sx={{ display: "flex", height: "7vh", margin:mobile?"0":"1vh" ,marginTop:mobile?"3vh":"1vh", justifyContent: "flex-end", gap: "1vw" }} key={i}>
             <Button
               variant="outlined"
               color="error"
@@ -90,7 +90,7 @@ useEffect(()=>{
             >
               X
             </Button>
-            <Box sx={{ display: "flex", width: "30vw", justifyContent: "space-between" }}>
+            <Box sx={{ display: "flex", width: mobile?"50vw":"30vw", justifyContent: "space-between" }}>
               <Typography variant="body1" color="initial">
                 &#8362;{product.price * (product.amount ? product.amount : 1)} Amount: {product.amount ? product.amount : 1}
               </Typography>
@@ -98,7 +98,7 @@ useEffect(()=>{
                 {product.name}
               </Typography>
             </Box>
-            <CardMedia sx={{ width: "5vw" }} component="img" src={product.imageArray[0].imageUrl} alt={product.imageArray[0].imageAlt} />
+            <CardMedia sx={{ width:mobile?"20vw": "5vw" }} component="img" src={product.imageArray[0].imageUrl} alt={product.imageArray[0].imageAlt} />
           </Box>
         );
       })}

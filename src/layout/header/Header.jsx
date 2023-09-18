@@ -14,7 +14,7 @@ export default function Header() {
 
 
     return (
-        <AppBar sx={{ position: "relative", height: "10vh", minHeight:"100px",display: "flex", flexDirection: "row", justifyContent: "space-around", bgcolor:"white",width:"100%" }}>
+        <AppBar sx={{ position: "relative", height: "10vh", minHeight:"100px",display: "flex", flexDirection: "row", bgcolor:"white",width:"100%",margin:0,padding:0 }}>
             <LeftNav />
             <Box>
             {user ? <RightNaveLoggedIn userName={user?.name.first} imageSrc={user.imageUrl}/> : <RightNav />}
