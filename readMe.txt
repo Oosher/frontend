@@ -13,9 +13,8 @@
   - [Product Pages](#product-pages)
   - [Search Functionality](#search-functionality)
 - [About Us](#about-us)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+
+
 
 ## Introduction
 The Project Store Website is a comprehensive e-commerce platform designed to showcase and sell your project-related products. It offers a wide range of features to enhance the user experience, including user accounts, an admin panel, intuitive navigation, and more.
