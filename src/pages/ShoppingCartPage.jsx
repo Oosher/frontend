@@ -56,8 +56,9 @@ useEffect(()=>{
         setErr("");
       
       createNewOrder({ orderDetails: [...getCartFromLocalStorage()], userName: user.name.first + " " + user.name.last, email: user.email, totalPriceNis: total }).then((res)=>
-      {
-        if (res.statusText==="OK") {
+      { 
+        if (res?.status===200) {
+          
             setOrderFinished(true);
             setOrderId(res.data._id);
             
