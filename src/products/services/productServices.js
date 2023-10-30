@@ -4,7 +4,7 @@ import { getKeyFromLocalStorage } from "../../localStorage/localStorageService";
 
 
 
-const apiAddress = "http://localhost:8181/"
+const apiAddress = "https://repulsive-tan-top-hat.cyclic.app/"
 
 
 
