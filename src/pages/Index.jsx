@@ -45,7 +45,7 @@ export default function Index() {
       }
 
 
-    if (products?===0|| !products)  return  <Typography variant="h3" color="initial" sx={{textAlign:"center",marginTop:"10vh"}}>No products where found found</Typography>
+    if (products?.length===0|| !products)  return  <Typography variant="h3" color="initial" sx={{textAlign:"center",marginTop:"10vh"}}>No products where found found</Typography>
 
 
     return (
