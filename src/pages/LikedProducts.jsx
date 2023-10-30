@@ -9,8 +9,8 @@ export default function LikedProducts() {
 
     const {likedItems} = useProductService(); 
 
-    if(!likedItems)return <Container>
-      <Typography variant="h1" color="initial">You don't have any liked products yet</Typography>
+    if(!likedItems?.length)return <Container sx={{width:"fit-content",marginTop:"20vh"}}>
+      <Typography variant="h2" color="initial">You don't have any liked products yet</Typography>
     </Container>
 
   return (
