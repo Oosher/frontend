@@ -10,7 +10,7 @@ import ProductsProvider from './products/providers/ProductsProvider';
 
 function App() {
   return (
-    <BrowserRouter basename='/frontend'>
+    <BrowserRouter >
       <UserProvider>
         <ProductsProvider>
           <Layout>
