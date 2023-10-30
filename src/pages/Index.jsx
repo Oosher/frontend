@@ -24,7 +24,7 @@ export default function Index() {
             }
             else{
 
-              setPage(products?.filter((product)=>product.category===currentCategory||product.name.includes(currentCategory)))
+              setPage(products?.filter((product)=>product.category===currentCategory?.toLowerCase()||product.name.includes(currentCategory.toLowerCase())))
 
             }
 

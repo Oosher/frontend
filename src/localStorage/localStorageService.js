@@ -148,12 +148,12 @@ export const getLikedProducts = ()=>{
 
 export const removeLikedProduct =async (product) =>{
 
-  const updatedLikedProducts = await getLikedProducts();
+    const updatedLikedProducts = await getLikedProducts();
 
-   await localStorage.setItem("likedProducts",JSON.stringify(updatedLikedProducts.filter((prod)=>prod.name!==product.name)))
+    await localStorage.setItem("likedProducts",JSON.stringify(updatedLikedProducts.filter((prod)=>prod.name!==product.name)))
 
     if (await !updatedLikedProducts) {
-       await localStorage.setItem("likedProducts","[]")
+        await localStorage.setItem("likedProducts","[]")
     }
 }
 
