@@ -88,7 +88,7 @@ export default function LogIn() {
         <Button
           variant="contained"
           color="warning"
-          sx={{ height: ["7vh","5vh","5vh"],width:["34vw","17vw","17vw"]}}
+          sx={{ height: ["6vh","5vh","5vh"],width:["34vw","17vw","17vw"]}}
           onClick={() => {
             goTo(ROUTS.SIGNUP);
           }}
