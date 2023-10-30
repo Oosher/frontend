@@ -7,7 +7,7 @@ import ShoppingCartButton from './ShoppingCartButton';
 
 export default function RightNav() {
     return (
-      <Box sx={{ display: "flex", gap: "1vw", alignItems: "center",width:"fit-content", marginRight: "5vw",marginTop:"4%"}}>
+      <Box sx={{ display: "flex", gap: "1vw", alignItems: "center",width:"fit-content", marginRight: "5vw",justifyContent:"center"}}>
         <ShoppingCartButton />
         <Link to={ROUTS.LOGIN} style={{ textDecoration: "none" }}>
           <Typography variant="h6" color="initial">
