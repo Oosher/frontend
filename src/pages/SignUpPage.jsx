@@ -32,7 +32,7 @@ export default function SignUpPage() {
 
 
 
-      if(Object.keys(errorInfo).length===0){
+      if(Object.keys(errorInfo)?.length===0){
     
         register(normalizeUser(signUpInfo)).then((data)=>console.log(data));
 

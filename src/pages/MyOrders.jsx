@@ -19,7 +19,7 @@ export default function MyOrders() {
     useEffect(()=>{
         if(user){
             getMyOrders(user).then((res)=>{
-                if (res?.data.length !==0) {
+                if (res?.data?.length !==0) {
                     setMyOrders(res?.data) 
                 }
                 

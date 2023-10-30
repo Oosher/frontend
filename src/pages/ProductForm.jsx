@@ -12,7 +12,7 @@ import { Button, Container, MenuItem, Select, TextField } from '@mui/material';
     const { categories } = useProductService();
     const submit = (e)=>{
         e.preventDefault();
-        if (Object.keys(errorInfo).length === 0) {
+        if (Object.keys(errorInfo)?.length === 0) {
           if (inputValue.select !== "Outer" && inputValue.select !== "Select a Category") {
             
             submissionFunc(normalizeProduct({ ...inputValue, category: inputValue.select }));
