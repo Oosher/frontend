@@ -72,7 +72,7 @@ export default function LogIn() {
 
     return (
       <Container sx={{ width: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", marginTop: "18vh", gap: "1vw" }}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5vh", width: "18vw" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5vh", width:["50vw","18vw","18vw"] }}>
           <TextField variant="outlined" name="email" label="Email" value={loginInfo.email} onChange={updateData} helperText={inputError.email} />
           <TextField variant="outlined" name="password" label="Password" value={loginInfo.password} onChange={updateData} helperText={inputError.password} />
 
@@ -88,7 +88,7 @@ export default function LogIn() {
         <Button
           variant="contained"
           color="warning"
-          sx={{ height: "5vh", width: "17vw" }}
+          sx={{ height: ["7vh","5vh","5vh"],width:["34vw","17vw","17vw"]}}
           onClick={() => {
             goTo(ROUTS.SIGNUP);
           }}
