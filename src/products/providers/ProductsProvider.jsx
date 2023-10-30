@@ -25,7 +25,7 @@ export default function ProductsProvider({ children }) {
         setLikedItems(getLikedProducts()?getLikedProducts() :[]);
 
         if (getCartFromLocalStorage()) {
-        
+            
             setCart(getCartFromLocalStorage());
 
         }else{
@@ -60,9 +60,9 @@ export default function ProductsProvider({ children }) {
 
   }, [products,categories]);
 
-      const addToCart = useCallback((product) => {
-        saveToLocalStorageCart(product);
-        setCart(getCartFromLocalStorage());
+      const addToCart = useCallback( async (product) => {
+        await saveToLocalStorageCart(product);
+        setCart( getCartFromLocalStorage());
       }, [setCart]);
 
 

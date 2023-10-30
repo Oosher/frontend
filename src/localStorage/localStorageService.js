@@ -43,7 +43,7 @@ export const removeJWT = ()=>localStorage.removeItem("key");
 //cart 
 
 
-export const saveToLocalStorageCart = (product) =>{
+export const saveToLocalStorageCart = async (product) =>{
 
     let cart = getCartFromLocalStorage();
 
@@ -71,7 +71,8 @@ export const saveToLocalStorageCart = (product) =>{
         
     }else{
         cart = [];  
-        cart.push({...product});
+        
+        cart.push(product);
 
 
 
@@ -161,4 +162,8 @@ export const removeLikedProduct =async (product) =>{
 
 
 
+
+if (!getCartFromLocalStorage()) {
+    localStorage.setItem("cart","[]");
+}
 

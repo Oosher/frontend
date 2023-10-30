@@ -31,9 +31,9 @@ export default function ShoppingCartPage() {
 useEffect(()=>{
     setTotal(0)
 
-    cart.map((product)=>{
+    cart?.map((product)=>{
 
-      return setTotal((prev)=>prev+(product.amount*product.price))})
+      return setTotal((prev)=>prev+(product?.amount*product?.price))})
 
 },[cart])
 
