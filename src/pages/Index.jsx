@@ -69,8 +69,8 @@ export default function Index() {
       }}
     />
         <Grid container spacing={2} direction="row-reverse">
-          {page?.map((product, index) => (
-            <Grid item xs={12} sm={6} xl={4} key={index}>
+          {page?.map((product) => (
+            <Grid item xs={12} sm={6} xl={4} key={product?._id}>
               <Product product={product} />
             </Grid>
           ))}

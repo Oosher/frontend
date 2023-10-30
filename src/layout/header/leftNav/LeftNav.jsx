@@ -42,7 +42,7 @@ export default function LeftNav() {
 
         {mobile? null :categories?.filter((category, index) => index < 6)
           .map((category) => (
-            <MenuItem sx={{ borderBottom: currentCategory === category ? "solid black 2px" : "0px" }}>
+            <MenuItem sx={{ borderBottom: currentCategory === category ? "solid black 2px" : "0px" }} key={category}>
               <ListItem
                 onClick={() => {
                   navigate(ROUTS.ROOT);
@@ -57,7 +57,7 @@ export default function LeftNav() {
             </MenuItem>
           ))}
 
-        <SwipeableDrawer anchor="left"  open={menuOpen} onClose={() => setMenuOpen((prev) => !prev) } >
+        <SwipeableDrawer anchor="left"  open={menuOpen} onOpen={()=>setMenuOpen((prev) => !prev)} onClose={() => setMenuOpen((prev) => !prev) } >
           <Box sx={{ marginTop: "107px" ,fontSize:"1.7rem",width: "fit-content"}}>
             {categories?.map((category) => (<Box key={category}>
               <ListItem
