@@ -33,7 +33,7 @@ export default function LogIn() {
 
        
 
-        if(Object.keys(inputError)?.length===0){
+        if(Object.keys(inputError).length===0){
           logIn(loginInfo).then((res)=>{
 
               if(res?.response?.data){

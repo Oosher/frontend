@@ -31,7 +31,7 @@ export default function OrderManegmentPage() {
             getOrderStatuses().then((res)=>setStatuses(res));
             
         }
-    },[user,statuses,allOrders?.length])
+    },[user,statuses,allOrders.length])
     
 
         const changeStatus = useCallback( ({target},orderId) =>{

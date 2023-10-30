@@ -11,7 +11,7 @@ export default function OrderSummeryPage({orderDetails,totalPrice,orderId}) {
    const [orders,setOrders] = useState([]);
     const [price,setPrice] = useState(0);
     useEffect(()=>{
-        if (orderDetails?.length!==0) {
+        if (orderDetails.length!==0) {
             setOrders(orderDetails);
             setPrice(totalPrice);
             clearShoppingCart();

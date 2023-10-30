@@ -39,7 +39,7 @@ export default function UserPage() {
                 setInputVal(Object.keys(user?.[selectedSetting]?user?.[selectedSetting]:[]))
             }
         }
-        if (settingsList?.length!==0) {
+        if (settingsList.length!==0) {
 
             setSettingsList((prev)=>prev = prev.slice(2))
             
@@ -47,13 +47,13 @@ export default function UserPage() {
 
      
       
-    },[user,settingsList?.length,selectedSetting,setUser]);
+    },[user,settingsList.length,selectedSetting,setUser]);
 
 
     const updateRequest = (e)=>{
 
         e.preventDefault();
-        if(Object.keys(errors)?.length===0){
+        if(Object.keys(errors).length===0){
         if(user.password.old===""||user.password.new===""){
             const updatedUser = user;
             delete updatedUser.password;

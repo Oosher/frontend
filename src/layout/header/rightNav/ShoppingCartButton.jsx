@@ -23,7 +23,7 @@ export default function ShoppingCartButton() {
 
   return (
     <IconButton onClick={()=>{navigate(ROUTS.CART)}}>
-      <Badge badgeContent={cart} color="error" sx={{ fontSize: "3rem" }}>
+      <Badge badgeContent={cart.length} color="error" sx={{ fontSize: "3rem" }}>
         <ShoppingCart sx={{ fontSize: mobile?"3rem":"4rem" }} />
       </Badge>
     </IconButton>
